@@ -1,6 +1,8 @@
 ASP.NET Core Dependency Injection
 =================================
 
+![ASP.NET Core Dependency Injection](https://baltaio.blob.core.windows.net/blog/aspnetcore-di-share.png)
+
 Ao separarmos e dividirmos responsabilidades, criamos dependências e uma hora temos que resolvê-las.  
   
 É comum e viável, focarmos na resolução de um problema e ignorar o que está ao redor dele, como por exemplo nos Controllers de nossas APIs.  
