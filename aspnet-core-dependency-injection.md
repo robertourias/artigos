@@ -28,27 +28,27 @@ Se o MeuRepositorio apresentado no código acima conter outra dependência, que 
   
 Veja este exemplo sem o uso de abstrações:
 
-```
-void main() {
-    var command = new Command("A", "B");
-    var uow = new UnitOfWork();
-    var repo = new UserRepository(uow);
-    var handler = new UserHandler(repo);
-    var result = handler.handle(command);  
-}
 
-public class DataContext { 
-    public DataContext(UnitOfWork uow) { ... }
-}
+    void main() {
+        var command = new Command("A", "B");
+        var uow = new UnitOfWork();
+        var repo = new UserRepository(uow);
+        var handler = new UserHandler(repo);
+        var result = handler.handle(command);  
+    }
 
-public class UserRepository {
-    public UserRepository(DataContext context) { ... }
-}
+    public class DataContext { 
+        public DataContext(UnitOfWork uow) { ... }
+    }
 
-public class UserHandler {
-    public UserHandler(UserRepository repository) { ... }
-}
-```
+    public class UserRepository {
+        public UserRepository(DataContext context) { ... }
+    }
+
+    public class UserHandler {
+        public UserHandler(UserRepository repository) { ... }
+    }
+
 
 Note que para chamar o Handler do usuário, nós precisamos primeiro do repositório, que por sua vez precisa do DataContext que por sua vez precisa do UnitOfWork.  
   
@@ -81,7 +81,15 @@ Diferente do Singleton, no AddTransient, para cada resolução de dependência, 
 
 ### Código
 
-Tanto o AddScopped quanto o Addtransient são utilizados no Startup.cs da sua API, como mostrado no código abaixo:
+Tanto o AddScopped quanto o Addtransient são utilizados no Startup.cs da sua API, como mostrado no código abaixo:`
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddMvc();
+        
+        services.AddScoped<StoreDataContext, StoreDataContext>();
+        services.AddTransient<ProductRepository, ProductRepository>();
+    }
 
 Note que utilizamos o DataContext com AddScopped pois ele manterá as conexões com bancos de dados e também as transações, e não queremos múltiplas conexões ou transações abertas caso haja necessidade de chamá-lo em mais de um lugar.  
   
@@ -96,6 +104,23 @@ Com as dependências resolvidas, podemos injetar objetos de duas formas nos Cont
 
 No exemplo abaixo, fazemos a injeção manual, onde temos uma propriedade, normalmente privada e somente leitura, que recebe a instância do nosso objeto.
 
+    public class ProductController : Controller
+    {
+        private readonly IProductRepository _repository;
+
+        public ProductController(IProductRepository repository)
+        {
+            _repository = repository;
+        }
+
+        [Route("v1/products")]
+        [HttpGet]
+        public IEnumerable<ListProductViewModel> Get()
+        {
+            return _repository.Get();
+        }
+    }
+
 Posteriormente, no construtor da classe, fazemos a injeção de dependência, que será resolvida pelo ASP.NET Core, gerando a instância do nosso objeto.  
   
 Para finalizar, passamos a instância do objeto gerado para nossa propriedade privada, finalizando o processo.
@@ -103,6 +128,16 @@ Para finalizar, passamos a instância do objeto gerado para nossa propriedade pr
 ### FromServices
 
 Há também uma forma mais limpa de injetar nossas dependências nos Controllers, utilizando o FromServices como no código abaixo:
+
+    public class ProductController : Controller
+    {
+        [Route("v1/products")]
+        [HttpGet]
+        public IEnumerable<ListProductViewModel> Get([FromServices]IProductRepository repository)
+        {
+            return repository.Get();
+        }
+    }
 
 Ao adicionar o FromServices a um parâmetro em algum método do seu Controller, o ASP.NET Core automaticamente buscará nas dependências (AddScopped, AddTransiente) suas implementações e fará a resolução.  
   
