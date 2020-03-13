@@ -29,13 +29,13 @@ Depende! Em tese eu não vejo um cenário onde por exemplo teria uma conexão ao
   
 Juntando isto com o fato da interrupção da execução e do log dos eventos, acaba complicando seu uso.  
   
-Imagine um cenário onde você \\u201cestoura\\u201d uma exceção no cadastro de clientes, no momento em que valida seu documento por exemplo (Afinal, não podemos salvar um cliente com documento inválido).  
+Imagine um cenário onde você estoura uma exceção no cadastro de clientes, no momento em que valida seu documento por exemplo (Afinal, não podemos salvar um cliente com documento inválido).  
   
-Em primeiro lugar, se esta fosse a primeira das suas N validações, seu fluxo seria interrompido aí, acarretando no retorno pra tela, o que incomodaria bastante o usuário, pois fica aquela validação \\u201cpicada\\u201d\\u2026 Corrige documento, nome errado\\u2026 corrige nome\\u2026 data de nascimento errado\\u2026 e por aí vai.  
+Em primeiro lugar, se esta fosse a primeira das suas N validações, seu fluxo seria interrompido aí, acarretando no retorno pra tela, o que incomodaria bastante o usuário, pois fica aquela validação picada. Corrige documento, nome errado corrige nome, data de nascimento errado, e por aí vai.  
   
 Em adicional, esta exceção, como comentei anteriormente, consumiria mais recursos, pelo fato de logar nos eventos da máquina, no caso, mais recursos de disco.  
   
-Agora imagina um cenário com milhões de cadastros? Ou um simples Brute Force ali\\u2026 seria o bastante pra lotar a máquina.  
+Agora imagina um cenário com milhões de cadastros? Ou um simples Brute Force ali, seria o bastante pra lotar a máquina.  
   
 Desta forma, quase nunca utilizo Exceptions no meu domínio. Utilizo Notification Pattern, com Flunt.
 
@@ -49,10 +49,10 @@ Outra abordagem que utilizo são os Fail Fast Validations, onde faço uma valida
 
 Trazer a regra de negócio para seu domínio tem um motivo: Testes de Unidade! Se você brigou tanto com o DBA pra sair das PROCS e não faz testes, não adianta nada.  
   
-É possível testarmos por exeções (ExpectedException), mas elas são mais \\u201cfalhas\\u201d, pois se você espera uma exceção do tipo ArgumentNullException no Name do Customer e ocorre uma outra exceção do tipo ArgumentNullException no Email do Customer, seu teste vai dar falso positivo.
+É possível testarmos por exeções (ExpectedException), mas elas são mais falhas, pois se você espera uma exceção do tipo ArgumentNullException no Name do Customer e ocorre uma outra exceção do tipo ArgumentNullException no Email do Customer, seu teste vai dar falso positivo.
 
 ### Curso 1975
 
-Tem mais um mundo de coisas que eu poderia escrever aqui, mas falei tanto sobre isto que até transformei em um curso, o 1975\\u200a\\u2014\\u200aModelando Domínios Ricos, que está gratuito no balta.io.
+Tem mais um mundo de coisas que eu poderia escrever aqui, mas falei tanto sobre isto que até transformei em um curso, o 1975 - Modelando Domínios Ricos, que está gratuito no balta.io.
 
 [1975 - Modelando Domínios Ricos](https://balta.io/cursos/1975)
