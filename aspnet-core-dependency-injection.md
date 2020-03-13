@@ -16,7 +16,7 @@ Dependa sempre da abstração
 
 Em diferentes pontos da sua aplicação, você criará interfaces, que nada mais são do que contratos que somente dizem o que deve ser feito, e não como. Estas interfaces são abstrações entre o que deve ser feito e como deve ser feito.  
   
-Se você assistiu o curso 1975 \\u2013 Modelando Domínios Ricos, você provavelmente percebeu que criamos interfaces para nossos repositórios, para abstrair sua implementação e podermos testá-los depois, criando versões FALSAS dele (FakeRepository).  
+Se você assistiu o curso 1975 - Modelando Domínios Ricos, você provavelmente percebeu que criamos interfaces para nossos repositórios, para abstrair sua implementação e podermos testá-los depois, criando versões FALSAS dele (FakeRepository).  
   
 Embora você possa fazer injeção de dependência sobre duas implementações, como mostrado abaixo:
 
