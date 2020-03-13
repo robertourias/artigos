@@ -1,3 +1,8 @@
+Começando com Flutter: Instalação no MacOs
+==========================================
+
+![Começando com Flutter: Instalação no MacOs](https://baltaio.blob.core.windows.net/blog/comecando-com-flutter-instalacao-macos-share.png)
+
 Esta série de artigos apresentam os passos iniciais para começar a desenvolver aplicações multiplataforma com Flutter e Dart.  
   
 Este artigo em específico mostra a instalação e configuração dos ambientes **Android** e **iOS** no **MacOs**, para outras versões de sistemas operacionais, consulte a lista abaixo:
