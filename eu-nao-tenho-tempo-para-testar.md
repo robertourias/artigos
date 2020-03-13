@@ -1,7 +1,7 @@
 Eu não tenho tempo para testar
 ==============================
 
-![ASP.NET Core Dependency Injection](https://baltaio.blob.core.windows.net/blog/aspnetcore-di-share.png)
+![ASP.NET Core Dependency Injection](https://baltaio.blob.core.windows.net/blog/eu-nao-tenho-tempo-para-testar.png)
 
 Quantas vezes você ignorou os testes, quantas vezes começou um projeto com testes de unidade e abandonou no meio do caminho por falta de tempo?
 
