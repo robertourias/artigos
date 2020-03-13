@@ -20,9 +20,33 @@ Se você assistiu o curso 1975 - Modelando Domínios Ricos, você provavelmente 
   
 Embora você possa fazer injeção de dependência sobre duas implementações, como mostrado abaixo:
 
+    public void Teste(MeuRepositorio repositorio) {
+    ...
+    }
+
 Se o MeuRepositorio apresentado no código acima conter outra dependência, que contém outra dependência e assim por dia, ficaria uma bagunça.  
   
 Veja este exemplo sem o uso de abstrações:
+
+    void main() {
+        var command = new Command("A", "B");
+        var uow = new UnitOfWork();
+        var repo = new UserRepository(uow);
+        var handler = new UserHandler(repo);
+        var result = handler.handle(command);  
+    }
+
+    public class DataContext { 
+        public DataContext(UnitOfWork uow) { ... }
+    }
+
+    public class UserRepository {
+        public UserRepository(DataContext context) { ... }
+    }
+
+    public class UserHandler {
+        public UserHandler(UserRepository repository) { ... }
+    }
 
 Note que para chamar o Handler do usuário, nós precisamos primeiro do repositório, que por sua vez precisa do DataContext que por sua vez precisa do UnitOfWork.  
   
