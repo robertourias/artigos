@@ -21,7 +21,7 @@ A instalação é relativamente simples, basta ir prosseguindo sem muitos misté
 
 A única tela que você precisa prestar atenção é a Verify Settings, que conterá o caminho da SDK do Android e da JDK do Java, que utilizaremos em breve aqui.
 
-![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows-001.png)
+![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows--001.PNG)
 
 Anote estes caminhos ou utilize o Print Screen para capturar a tela.
 
@@ -40,7 +40,7 @@ Para os executáveis que ficam fora destas pastas, temos as **Variáveis de Ambi
 
 Para encontrar as variáveis de ambiente basta apertar a tecla **_Janela do Windows_** do seu teclado e digitar "Variaveis de Ambiente" ou "Environment Variables" caso esteja em inglês.
 
-![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows-002.png)
+![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows--002.PNG)
 
 Na nova janela que se abrirá, vamos clicar em "Variáveis de Ambiente" ou "Environment Variables" caso esteja em inglês, e uma nova tela se abrirá.
 
@@ -48,7 +48,7 @@ Na sessão "Variáveis do usuário" ou "User Variables", adicione um novo valor 
 
 O caminho do JDK foi mostrado na imagem **Verify Settings** durante a instalação do Android Studio. Caso não tenha salvo o caminho, por padrão ele será **_C:\\Program Files\\Android\\Android Studio\\jre_**.
 
-![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows-003.png)
+![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows--003.PNG)
 
 Clique em OK mas não feche as variáveis de ambiente ainda, precisamos agora configurar os caminhos que o Android utiliza.
 
@@ -65,7 +65,7 @@ Este caminho também é mostrado na tela **Verify Settings** durante a instalaç
 
 Vamos então selecionar o item **PATH** na tela de variáveis de ambiente e clicar em **EDITAR**. Na nova tela que se abre, adicione um novo item utilizando o botão **NOVO** com o **_caminho do Android Tools_**.
 
-![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows-004-1024x465.png)
+![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows--004.PNG)
 
 Pronto, isto é tudo que precisamos na parte de variáveis de ambiente por enquanto, mas deixe esta janela aberta pois precisaremos ainda configurar o Flutter.
 
@@ -100,7 +100,7 @@ Assim como o Windows não reconhecia os comandos do Java, ele também não recon
 
 Vamos agora editar a variável **PATH**, ainda nas variáveis de usuário, e adicionar o caminho para os binários, onde baixamos os fontes do Flutter, que no nosso caso foi **_C:\\flutter\\bin_**.
 
-![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows-005-1024x459.png)
+![](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows--005.PNG)
 
 Note que adicionamos o **bin** ao caminho, não se esqueça deste detalhe. Neste momento você pode fechar a tela de variáveis de ambiente e todos os terminais em aberto.
 
