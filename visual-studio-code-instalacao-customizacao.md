@@ -39,7 +39,7 @@ Em seguida, execute o instalador baixado e siga as instruções na tela, não es
 
 Finalizada a instalação, feche todos os terminais abertos e abra um novo (Power Shell ou [Windows Terminal](https://www.microsoft.com/pt-br/p/windows-terminal-preview/9n0dx20hk701?activetab=pivot:overviewtab)) e digite o comando abaixo.
 
-code --version
+    code --version
 
 Se tudo ocorrer como esperado, você verá a versão do Visual Studio Code instalada em sua máquina e estará tudo pronto para prosseguir.
 
@@ -65,7 +65,7 @@ A instalação no Linux é relativamente simples, basta acessar o [site oficial 
 
 Como resultado do Download você terá um pacote .deb na pasta Downloads. Abra um terminal, navegue até a mesma e execute o seguinte comando.
 
-sudo apt install ./ARQUIVO\_BAIXADO.deb
+    sudo apt install ./ARQUIVO\_BAIXADO.deb
 
 Pronto, a instalação do Visual Studio Code está realizada e ele já deve aparecer no menu de aplicativos para você.
 
@@ -111,20 +111,20 @@ No canto superior direito desta tela, haverá um botão chamado **_Open Settings
 
 Caso queira manter todas as configurações como as nossas, utilize o JSON abaixo em sua configuração.
 
-{  
-"editor.formatOnSave": true, // Formata o código sempre que salvamos  
-"editor.fontFamily": "Source Code Pro", // Fonte  
-"editor.fontSize": 18, // Tamanho da Fonte  
-"workbench.colorTheme": "Atom One Dark", // Tema  
-"workbench.iconTheme": "vscode-icons", // Pacote de Ícones  
-"workbench.startupEditor": "newUntitledFile", // Abre sempre um arquivo em branco  
-"editor.minimap.enabled": false, // Desabilita o Mini Map  
-"workbench.panel.defaultLocation": "right", // Deixa o terminal a direita  
-"terminal.integrated.cursorStyle": "underline", // Deixa o cursor do terminal como underline  
-"terminal.integrated.fontSize": 18, // Tamanho da fonte do terminal  
-"git.enableSmartCommit": true, // Habilita Smart Commit do GIT  
-"git.autofetch": true // Habilita Auto Fetch do GIT  
-}
+    {  
+        "editor.formatOnSave": true, // Formata o código sempre que salvamos  
+        "editor.fontFamily": "Source Code Pro", // Fonte  
+        "editor.fontSize": 18, // Tamanho da Fonte  
+        "workbench.colorTheme": "Atom One Dark", // Tema  
+        "workbench.iconTheme": "vscode-icons", // Pacote de Ícones  
+        "workbench.startupEditor": "newUntitledFile", // Abre sempre um arquivo em branco  
+        "editor.minimap.enabled": false, // Desabilita o Mini Map  
+        "workbench.panel.defaultLocation": "right", // Deixa o terminal a direita  
+        "terminal.integrated.cursorStyle": "underline", // Deixa o cursor do terminal como underline  
+        "terminal.integrated.fontSize": 18, // Tamanho da fonte do terminal  
+        "git.enableSmartCommit": true, // Habilita Smart Commit do GIT  
+        "git.autofetch": true // Habilita Auto Fetch do GIT  
+    }
 
 Note que para utilizar a mesma fonte, tema e ícones você precisa instalá-los primeiro, então siga os processos abaixo antes de salvar esta configuração.
 
