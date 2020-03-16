@@ -11,7 +11,7 @@ O Visual Studio Code é um editor de código criado pela Microsoft e que tem uma
 *   [Requisitos](#requisitos)
 *   [Instalação no Windows](#instalação-no-windows)
 *   [Instalação no Mac](#instalação-no-mac)
-*   [Instalação no Windows](#instalação-no-linux)
+*   [Instalação no Linux (Ubuntu)](#instalação-no-linux-ubuntu)
 *   [Extensões](#extensões)
 *   [Configurações](#configurações)
 *   [Ícones e Temas](#ícones-e-temas)
