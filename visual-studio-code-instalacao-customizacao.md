@@ -9,13 +9,12 @@ O Visual Studio Code é um editor de código criado pela Microsoft e que tem uma
 ------
 
 *   [Requisitos](#requisitos)
-*   Instalação no Windows
-*   Instalação no Mac
-*   Instalação no Windows
-*   Extensões
-*   Configurações
-*   Ícones
-*   Temas
+*   [Instalação no Windows](#windows)
+*   [Instalação no Mac](#mac)
+*   [Instalação no Windows](#linux)
+*   [Extensões](#extensoes)
+*   [Configurações](#configuracoes)
+*   [Ícones e Temas](#icones-e-temas)
 
 Requisitos
 ----------
@@ -65,7 +64,7 @@ A instalação no Linux é relativamente simples, basta acessar o [site oficial 
 
 Como resultado do Download você terá um pacote .deb na pasta Downloads. Abra um terminal, navegue até a mesma e execute o seguinte comando.
 
-    sudo apt install ./ARQUIVO\_BAIXADO.deb
+    sudo apt install ./ARQUIVO_BAIXADO.deb
 
 Pronto, a instalação do Visual Studio Code está realizada e ele já deve aparecer no menu de aplicativos para você.
 
