@@ -1,7 +1,7 @@
 Visual Studio Code - Instalação e Customização
 ==============================================
 
- 
+![Visual Studio Code - Instalação e Customização](https://baltaio.blob.core.windows.net/blog/visual-studio-code-instalacao-customizacao.jpg)
 
 O Visual Studio Code é um editor de código criado pela Microsoft e que tem uma grande adoção pelas comunidades de diversas linguagens e tecnologias.
 
