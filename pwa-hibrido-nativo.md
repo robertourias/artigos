@@ -1,6 +1,8 @@
 PWA, Híbrido ou Nativo
 ======================
 
+![PWA, Híbrido ou Nativo](https://baltaio.blob.core.windows.net/blog/pwa-hibrido-nativo.jpg)
+
 Nesta última Terça Feira, 05 de Novembro de 2019, tive o prazer de receber o ilustre [**Rodrigo Branas**](https://www.youtube.com/rodrigobranas) para batermos um papo sobre PWAs, Híbridos e Nativos.  
   
 Este é um assunto muito discutido, afinal é uma tomada de decisão muito importante em qualquer produto, e neste bate-papo falamos muito (Muito mesmo, quase 1 hora e quarenta minutos) sobre nossas opiniões sobre o assunto.  

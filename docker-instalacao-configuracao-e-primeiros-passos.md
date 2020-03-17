@@ -1,5 +1,7 @@
+Docker - Instalação, Configuração e Primeiros Passos
+====================================================
 
-![Docker](https://baltaio.blob.core.windows.net/blog/docker-instalacao-configuracao-e-primeiros-passos.jpg)
+![Docker - Instalação, Configuração e Primeiros Passos](https://baltaio.blob.core.windows.net/blog/docker-instalacao-configuracao-e-primeiros-passos.jpg)
 
 O Docker é uma forma de abstração da nossa infraestrutura que nos beneficia tanto em tempo de desenvolvimento quanto em produção.
 

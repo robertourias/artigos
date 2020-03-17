@@ -1,7 +1,7 @@
 Fundamentos dos Testes de Unidade
 =================================
 
-![Fundamentos dos Testes de Unidade](https://baltaio.blob.core.windows.net/blog/fundamento-testes-unidade-share.png)
+![Fundamentos dos Testes de Unidade](https://baltaio.blob.core.windows.net/blog/fundamentos-testes-de-unidade.jpg)
 
 Ter uma base sólida em testes de unidade é fundamental para que você possa se mover por diversas tecnologias e linguagens, e neste artigo, vou colocar os principais fundamentos que você precisa para ser fera em testes.
 

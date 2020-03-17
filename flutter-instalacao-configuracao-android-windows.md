@@ -1,6 +1,8 @@
 Flutter - Instalação e Configuração do Android no Windows
 =========================================================
 
+![Flutter - Instalação e Configuração do Android no Windows](flutter-instalacao-configuracao-android-windows.jpg)
+
 Para executar este tutorial você vai precisar do **Windows 10**. Você pode testar por conta e risco em versões anteriores, porém recomendamos a versão 10 por ser mais estável e recente.
 
 Para executar os comandos, neste tutorial utilizamos o [**Windows Terminal**](https://www.microsoft.com/pt-br/p/windows-terminal-preview/9n0dx20hk701?activetab=pivot:overviewtab), mas você pode utilizar o **Power Shell** que já vem nativo no Windows 10.

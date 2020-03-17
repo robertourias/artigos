@@ -1,7 +1,7 @@
 Eu não tenho tempo para testar
 ==============================
 
-![Eu não tenho tempo para testar](https://baltaio.blob.core.windows.net/blog/eu-nao-tenho-tempo-para-testar-share.png)
+![Eu não tenho tempo para testar](https://baltaio.blob.core.windows.net/blog/eu-nao-tenho-tempo-para-testar.jpg)
 
 Quantas vezes você ignorou os testes, quantas vezes começou um projeto com testes de unidade e abandonou no meio do caminho por falta de tempo?
 

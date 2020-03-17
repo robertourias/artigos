@@ -1,7 +1,7 @@
 ASP.NET Core - Autenticação e Autorização
 =========================================
 
-![ASP.NET Core - Autenticação e Autorização](https://baltaio.blob.core.windows.net/blog/aspnet-core-autenticacao-autorizacao-share.png)
+![ASP.NET Core - Autenticação e Autorização](https://baltaio.blob.core.windows.net/blog/aspnet-core-autenticacao-autorizacao.jpg)
 
 Um termo recorrente nas APIs é a autenticação e autorização, os Roles, Claims, Policies, JWT, oAuth e tudo mais. Embora pareça um assunto complexo, não é, e vamos desmistificar tudo neste guia!
 

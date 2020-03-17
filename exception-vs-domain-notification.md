@@ -1,6 +1,8 @@
 Exception VS Domain Notification
 ================================
 
+![Exception VS Domain Notification](exception-vs-domain-notification.jpg)
+
 Então você precisa validar suas entidades de domínio e tem duas opções. Talvez a mais clara seria utilizar Exceptions, mas será que ela é a melhor escolha?  
   
 Neste artigo vamos abrir espaço para o eterno debate sobre Exceptions VS Domain Notifications e vou colocar alguns motivos nos quais utilizo Domain Notifications nas validações do meu domínio.
