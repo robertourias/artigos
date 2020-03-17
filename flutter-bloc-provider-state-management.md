@@ -40,7 +40,26 @@ Porém, o formulário de Login precisa de dois controladores, um para o usuário
 Neste caso, podemos enviar e receber informações pelos CONSTRUTORES das classes sem problema, basta definir o que precisamos e ao chamar a página ou Widget, informar o valor.  
   
 No exemplo abaixo, deixamos como obrigatório a passagem do parâmetro TAG a página de detalhes do produto.  
+
+    class ProductPage extends StatelessWidget {
+    final String tag;
+    final _service = new ProductRepository();
+
+    ProductPage({@required this.tag});
+
+    @override
+    Widget build(BuildContext context) {
+
 Em seguida, ao fazermos a navegação para a página de detalhes do produto, devemos informar a TAG.  
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ProductPage(
+                tag: item.tag,
+                ),
+        ),
+    );
   
 Podemos também devolver valores para a página pai sempre que fechamos uma página, tornando a comunicação bidirecional.  
   
@@ -98,9 +117,33 @@ Este conceito é muito utilizado no Backend também, nos cenários de bancos de 
   
 No Flutter temos um cara bacana para isto, que é o [Provider](https://pub.dev/packages/provider), onde adicionamos o que queremos distribuir na raíz da nossa aplicação.  
   
+    class MyApp extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+            return MultiProvider(
+            providers: [
+                ChangeNotifierProvider<HomeBloc>.value(
+                value: HomeBloc(),
+                ),
+                ChangeNotifierProvider<CartBloc>.value(
+                value: CartBloc(),
+                ),
+                ChangeNotifierProvider<ThemeBloc>.value(
+                value: ThemeBloc(),
+                ),
+            ],
+            child: Main(),
+            );
+        }
+    }
   
 E depois simplesmente chamamos Provider.of para receber o valor da memória.  
   
+    class CartPage extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+            bloc = Provider.of<CartBloc>(context);
+            items = bloc.cart;
   
 Desta forma, garantimos que sempre que teremos uma única lista de produtos (Carrinho) para todo nosso App.
 
