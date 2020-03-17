@@ -78,22 +78,22 @@ O .NET Core 3.0 adiciona suporte para ARM64 para Linux. Um grande avanço para c
 
 Resumo do Evento – Live ASP.NET Cast
 ------------------------------------
-[Clique aqui para assistir](https://www.youtube.com/embed/LiDoUVMkT38)
+[Clique aqui para assistir](https://www.youtube.com/watch?v=LiDoUVMkT38)
 
 Vídeos que gostei do .NET Conf
 ------------------------------
-*   [Entity Framework Core 3.0 and Beyond](https://www.youtube.com/embed/PXdgyPpfaz4)
-*   [The Future of the Blazor on the Client](https://www.youtube.com/embed/qF6ixMjCzHA)
-*   [Blazor and Azure Functions for Serverless Websites](https://www.youtube.com/embed/noG3rxt38VI)
-*   [DevOps for the .NET Developers](https://www.youtube.com/embed/iQ4HhdxCYN0)
-*   [Durable Functions 2.0](https://www.youtube.com/embed/aHue7XuNYZA)
-*   [Create Interactive Documentations](https://www.youtube.com/embed/XWetRp1f5xg)
-*   [Azure App Configuration](https://www.youtube.com/embed/zRstfC3Nn7M)
-*   [Azure Services Every .NET Developer Needs to Know](https://www.youtube.com/embed/Z9OdipwevSM)
-*   [Diagnostics Improvements on .NET Core 3.0](https://www.youtube.com/embed/fkjetdIdcyg)
-*   [Secure your NuGet package Ecosystem](https://www.youtube.com/embed/UTPct8FKu8I)
-*   [Building Cloud Native Apps with .NET Core 3.0 and Kubernetes](https://www.youtube.com/embed/A0i5BUoKu6s)
-*   [What`s new in SignalR with .NET Core 3.0](https://www.youtube.com/embed/dHiETzo6GB8)
+*   [Entity Framework Core 3.0 and Beyond](https://www.youtube.com/watch?v=PXdgyPpfaz4)
+*   [The Future of the Blazor on the Client](https://www.youtube.com/watch?v=qF6ixMjCzHA)
+*   [Blazor and Azure Functions for Serverless Websites](https://www.youtube.com/watch?v=noG3rxt38VI)
+*   [DevOps for the .NET Developers](https://www.youtube.com/watch?v=iQ4HhdxCYN0)
+*   [Durable Functions 2.0](https://www.youtube.com/watch?v=aHue7XuNYZA)
+*   [Create Interactive Documentations](https://www.youtube.com/watch?v=XWetRp1f5xg)
+*   [Azure App Configuration](https://www.youtube.com/watch?v=zRstfC3Nn7M)
+*   [Azure Services Every .NET Developer Needs to Know](https://www.youtube.com/watch?v=Z9OdipwevSM)
+*   [Diagnostics Improvements on .NET Core 3.0](https://www.youtube.com/watch?v=fkjetdIdcyg)
+*   [Secure your NuGet package Ecosystem](https://www.youtube.com/watch?v=UTPct8FKu8I)
+*   [Building Cloud Native Apps with .NET Core 3.0 and Kubernetes](https://www.youtube.com/watch?v=A0i5BUoKu6s)
+*   [What`s new in SignalR with .NET Core 3.0](https://www.youtube.com/watch?v=dHiETzo6GB8)
 
 Fonte:
 ------
