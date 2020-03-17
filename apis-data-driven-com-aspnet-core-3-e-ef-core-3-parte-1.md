@@ -217,7 +217,7 @@ Desta forma, podemos criar uma dependência do DataContext e dizer “Olha, para
 A nível de código, criamos dependências simplesmente explicitando um objeto no construtor da classe, como por exemplo.
 
     public class ProductController {
-    public ProductController(DataContext context) { ... }
+        public ProductController(DataContext context) { ... }
     }
 
 Desta forma criamos uma dependência do DataContext no ProductController, o que é totalmente plausível, afinal sem um contexto não conseguimos fazer nenhuma operação de produto no banco.  
