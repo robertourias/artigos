@@ -42,13 +42,13 @@ Neste caso, podemos enviar e receber informações pelos CONSTRUTORES das classe
 No exemplo abaixo, deixamos como obrigatório a passagem do parâmetro TAG a página de detalhes do produto.  
 
     class ProductPage extends StatelessWidget {
-    final String tag;
-    final _service = new ProductRepository();
+        final String tag;
+        final _service = new ProductRepository();
 
-    ProductPage({@required this.tag});
+        ProductPage({@required this.tag});
 
-    @override
-    Widget build(BuildContext context) {
+        @override
+        Widget build(BuildContext context) {
 
 Em seguida, ao fazermos a navegação para a página de detalhes do produto, devemos informar a TAG.  
 
@@ -153,7 +153,14 @@ Notificar os Widgets
 O último problema da nossa lista é notificar os Widgets. Quando adicionarmos um produto no carrinho na página de produtos, como nossa Tab vai saber que tem um produto novo e atualizar seu contador?  
   
 Toda vez que utilizamos o Provider, ficamos observando mudanças e existe um método chamado **NotifyListeners** que dispara o **SetState** atualizando todos os Widgets que fazem uso do contexto em memória que criamos.  
-  
+
+    calculateTotal() {
+        total = 0;
+        cart.forEach((x) {
+            total += (x.price * x.quantity);
+        });
+        notifyListeners();
+    }
   
 Neste exemplo, deixamos o **notifyListeners** dentro do calculateTotal, afinal, sempre que adicionamos ou removemos um item, chamamos este método, e devemos tomar cuidado para não chamar excessivamente o notifyListeners.  
   
@@ -175,10 +182,65 @@ Neste caso, separamos a lógica/regras de negócio das nossas páginas ou Widget
 Note que agora quem gerencia o estado é o Product Details BLoC e as páginas (Material/Cupertino) consomem ele apenas.  
   
 Aqui vai um exemplo do BLoC de carrinho de compras do nosso curso de Flutter.  
-  
+
+    import 'package:eshop/models/cart-item.model.dart';
+    import 'package:flutter/widgets.dart';
+
+    class CartBloc extends ChangeNotifier {
+        var cart = new List<CartItemModel>();
+        double total = 0;
+
+        get() {
+            return cart;
+        }
+
+        add(CartItemModel item) {
+            cart.add(item);
+            calculateTotal();
+        }
+
+        remove(CartItemModel item) {
+            cart.removeWhere((x) => x.id == item.id);
+            calculateTotal();
+        }
+
+        itemInCart(CartItemModel item) {
+            var result = false;
+            cart.forEach((x) {
+            if (item.id == x.id) result = true;
+            });
+            return result;
+        }
+
+        increase(CartItemModel item) {
+            if (item.quantity < 10) {
+            item.quantity++;
+            calculateTotal();
+            }
+        }
+
+        decrease(CartItemModel item) {
+            if (item.quantity > 1) {
+            item.quantity--;
+            calculateTotal();
+            }
+        }
+
+        calculateTotal() {
+            total = 0;
+            cart.forEach((x) {
+            total += (x.price * x.quantity);
+            });
+            notifyListeners();
+        }
+    }
   
 E aqui é a forma como consumimos ele, sem gerar dependências.  
-  
+
+    class TabsPage extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+            final bloc = Provider.of<CartBloc>(context);
 
 ### Posso utilizar BLoC com Provider?
 
