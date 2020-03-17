@@ -3,7 +3,7 @@ Data Driven vs Domain Driven
 
 ![Data Driven vs Domain Driven](https://baltaio.blob.core.windows.net/blog/data-driven-vs-domain-driven.jpg)
 
-Recentemente publiquei um vídeo, no canal do balta.io no YouTube, onde [criamos uma API com ASP.NET Core 3 e EF Core 3 em menos de 15 minutos](http://youtube.com/watch?v=but7jqjopdKM).
+Recentemente publiquei um vídeo, no canal do balta.io no YouTube, onde [criamos uma API com ASP.NET Core 3 e EF Core 3 em menos de 15 minutos](https://www.youtube.com/watch?v=but7jqjopKM).
 
 Claro que é apenas uma demo, e ainda faltam recursos na API como versionamento, cache, compressão, documentação entre outros, mas se levarmos em conta que no fim temos um cadastro de produtos com categorias, em menos de 15 minutos, é algo de se pensar.
 
