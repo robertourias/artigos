@@ -170,10 +170,10 @@ Abra um terminal no VS Code e execute o comando **_dotnet watch run_**, nossa AP
 
 Vamos então para o [Postman](https://www.postman.com/downloads/), executar os seguintes testes.
 
-*   POST https://localhost:5001/products{'title':'Produto 1', 'deleted': false}
-*   POST https://localhost:5001/products{'title':'Produto 2', 'deleted': true}
-*   POST https://localhost:5001/products{'title':'Produto 3', 'deleted': false}
-*   GET https://localhost:5001/products=> Deve retornar os três produtos cadastrados
+*   POST https://localhost:5001/products => {'title':'Produto 1', 'deleted': false}
+*   POST https://localhost:5001/products => {'title':'Produto 2', 'deleted': true}
+*   POST https://localhost:5001/products => {'title':'Produto 3', 'deleted': false}
+*   GET https://localhost:5001/products => Deve retornar os três produtos cadastrados
 
 Soft Delete - Aplicando filtros globais
 ---------------------------------------
