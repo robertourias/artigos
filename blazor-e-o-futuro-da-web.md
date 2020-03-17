@@ -3,7 +3,7 @@ Blazor e o Futuro da Web
 
 ![Blazor e o Futuro da Web](https://baltaio.blob.core.windows.net/blog/blazor-e-o-futuro-da-web.jpg)
 
-Recentemente publiquei meu primeiro conteúdo sobre Blazor, um [vídeo onde mostro algumas funcionalidades básicas](https://www.youtube.com/embed/z_22O4eZLnk) sobre o assunto em menos de 15 minutos.
+Recentemente publiquei meu primeiro conteúdo sobre Blazor, um [vídeo onde mostro algumas funcionalidades básicas](https://www.youtube.com/watch?v=z_22O4eZLnk) sobre o assunto em menos de 15 minutos.
 
 Este vídeo provocou vários comentários e perguntas nas minhas redes sociais. Desde pessoas odiando a ideia, até pessoas querendo já colocar em produção (Ainda está em preview pessoal).  
 Este artigo é para falar sobre Blazor, WebAssembly e o que esta **alternativa** nos traz de benefícios.
@@ -74,7 +74,7 @@ WASM com certeza! Já faz um tempo que dizemos que WebAssembly é o futuro da We
   
 Agora em relação ao Blazor, tudo vai da adoção do mercado em relação a ele e do suporte WASM nos Browsers. Recentemente tivemos uma grande **vitória** com a adoção da Apple (Safari iOS -- [https://caniuse.com/#feat=wasm](https://caniuse.com/#feat=wasm) ) dos WASM, mas ainda é cedo para dizer algo sobre.  
   
-Eu gravei um [vídeo falando o que poderia acontecer de ruim com o Blazor](https://www.youtube.com/embed/Fv9vS3QsbRE). Embora seja um vídeo antigo e algumas coisas já tenham melhorado, ainda tem pontos de vista bem válidos nele.
+Eu gravei um [vídeo falando o que poderia acontecer de ruim com o Blazor](https://www.youtube.com/watch?v=Fv9vS3QsbRE). Embora seja um vídeo antigo e algumas coisas já tenham melhorado, ainda tem pontos de vista bem válidos nele.
 
 ### Fonte:
 
