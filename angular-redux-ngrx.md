@@ -142,7 +142,7 @@ Lembra que comentei que o Redux existe para várias plataformas? Pois é, temos 
 Para executar este exemplo, vamos precisar do NgRx e seu Store, seguindo as instalações abaixo.  
   
     npm install @ngrx/store –save 
-    _ng add @ngrx/store
+    ng add @ngrx/store
   
 Desta forma está tudo pronto para começarmos a codificar.
 
