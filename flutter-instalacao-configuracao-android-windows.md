@@ -1,7 +1,7 @@
 Flutter - Instalação e Configuração do Android no Windows
 =========================================================
 
-![Flutter - Instalação e Configuração do Android no Windows](flutter-instalacao-configuracao-android-windows.jpg)
+![Flutter - Instalação e Configuração do Android no Windows](https://baltaio.blob.core.windows.net/blog/flutter-instalacao-configuracao-android-windows.jpg)
 
 Para executar este tutorial você vai precisar do **Windows 10**. Você pode testar por conta e risco em versões anteriores, porém recomendamos a versão 10 por ser mais estável e recente.
 

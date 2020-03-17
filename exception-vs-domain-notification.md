@@ -1,7 +1,7 @@
 Exception VS Domain Notification
 ================================
 
-![Exception VS Domain Notification](exception-vs-domain-notification.jpg)
+![Exception VS Domain Notification](https://baltaio.blob.core.windows.net/blog/exception-vs-domain-notification.jpg)
 
 Então você precisa validar suas entidades de domínio e tem duas opções. Talvez a mais clara seria utilizar Exceptions, mas será que ela é a melhor escolha?  
   
