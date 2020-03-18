@@ -81,18 +81,18 @@ Vamos então acessar a [página oficial do Git](https://git-scm.com/) e fazer o 
 
 Caso esteja no Linux, você pode utilizar os comandos abaixo no seu terminal para instalação.
 
-// Debian
-sudo apt update
-sudo apt upgrade
-sudo apt install git
+    // Debian
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install git
 
-// Red Hat
-sudo yum upgrade
-sudo yum install git
+    // Red Hat
+    sudo yum upgrade
+    sudo yum install git
 
 Abra um novo terminal e execute o seguinte comando para verificar se a instalação foi realizada com sucesso.
 
-git --version
+    git --version
 
 Se tudo estiver funcionando, você verá a versão do Git instalada em sua máquina e o comando **git** estará disponível para continuarmos nossos estudos.
 
@@ -103,8 +103,8 @@ Nosso próximo passo é configurar nossa conta para trabalhar com o Git, e isto 
 
 Como estas configurações são globais, também devemos adicionar a opção --global ao comando, seguida dos valores entre aspas.
 
-git config --global user.name "Andre Baltieri"
-git config --global user.email "meuemail@github.com"
+    git config --global user.name "Andre Baltieri"
+    git config --global user.email "meuemail@github.com"
 
 Executando estes dois comandos, temos nosso nome e E-mail armazenados e a cada alteração que fizermos eles serão automaticamente adicionados.
 
@@ -132,9 +132,9 @@ Iniciando um Repositório
 
 Para começar a brincar com o Git/GitHub, vamos criar uma pasta em um local seguro. Para isto, abra um terminal de sua preferência e execute os comandos:
 
-mkdir meurepo  
-cd meurepo  
-code .
+    mkdir meurepo  
+    cd meurepo  
+    code .
 
 Isto fará a criação de uma nova pasta chamada **meurepo** e abrirá a mesma com o _Visual Studio Code_. Caso não tenha o VS Code instalado e adicionado ao PATH, [siga nosso guia de instalação](https://balta.io/blog/visual-studio-code-instalacao-customizacao).
 
@@ -148,7 +148,10 @@ Os arquivos ".md" são no formato MarkDown, que é uma espécie de linguagem de 
 
 Abra o arquivo README.md e coloque o seguinte código nele.
 
-Meu Primeiro Repositório ======================== O Git/GitHub são legais!
+    Meu Primeiro Repositório 
+    ======================== 
+
+    O Git/GitHub são legais!
 
 Não se preocupe em entender o MarkDown neste momento, depois você pode entrar em mais detalhes dele por sua conta.
 
@@ -164,7 +167,7 @@ Ainda no Visual Studio Code, pressione **_CTRL (CMD)+\`_** para abrir o terminal
 
 Na nova janela que se abrirá, execute o seguinte comando.
 
-git init
+    git init
 
 Se tudo deu certo, você receberá a mensagem _"Initialized empty Git repository in C:/dev/meurepo/.git/"_. Pronto, temos nosso repositório iniciado.
 
@@ -179,11 +182,11 @@ Em projetos maiores, você terá MUITOS arquivos, e nem todos você pode querer 
 
 Desta forma, vamos adicionar o README.md executando o seguinte comando:
 
-git add .\\README.md
+    git add .\README.md
 
 Caso esteja trabalhando com muitos arquivos e queira adicionar TODOS de uma única vez, você pode usar o comando:
 
-git add --all
+    git add --all
 
 Desta forma, informamos ao projeto os arquivos que estão sendo gerenciados pelo Git e que possívelmente vão para nosso servidor.
 
@@ -210,7 +213,7 @@ Os comentários podem ser adicionados utilizando o parâmetro "-m", seguido pelo
 
 Desta forma, nosso primeiro comando de commit ficará assim:
 
-git commit -m "Adicionado arquivo readme.md"
+    git commit -m "Adicionado arquivo readme.md"
 
 Neste momento, localmente está tudo pronto, e já podemos enviar nossas informações para o servidor.
 
@@ -225,7 +228,7 @@ Para realizar esta ação, vamos utilizar o comando **remote**, seguido pela op�
 
 O comando **remote add origin** é seguido pela URL do repositório, conforme vimos anteriormente. Neste caso, o comando fica:
 
-git remote add origin https://github.com/USUARIO/meu-primeiro-repositorio.git
+    git remote add origin https://github.com/USUARIO/meu-primeiro-repositorio.git
 
 Pronto, temos agora uma ligação deste repositório local com o remoto e já podemos fazer o envio das informações.
 
@@ -265,7 +268,7 @@ Os envios pelo Git são sempre feitos pelo comando **push** e devemos sempre esp
 
 Como neste caso estamos trabalhando na Branch Master, vamos especifica-la como padrão no envio, utilizando o seguinte comando.
 
-git push -u origin master
+    git push -u origin master
 
 Pronto, neste momento, serão enviados os arquivos para o servidor e você poderá ver o resultado acessando a URL do repositório, que no caso é https://github.com/USUARIO/meu-primeiro-repositorio.
 
@@ -282,13 +285,17 @@ Vamos então editar nosso arquivo README.md no servidor, utilizando a URL https:
 
 Adicione o seguinte conteúdo ao arquivo, preencha o campo **Commit Changes** com o texto "Atualizado pelo GitHub" e clique em "Commit Changes".
 
-Meu Primeiro Repositório ======================== O Git/GitHub são legais! Agora estou atualizado
+    Meu Primeiro Repositório 
+    ======================== 
+
+    O Git/GitHub são legais! 
+    Agora estou atualizado
 
 Neste momento, uma versão atualizada do README.md deve aparecer na tela, diferente do que temos no Visual Studio Code.
 
 Agora, no Visual Studio Code, feche o arquivo README.md e no terminal, execute o seguinte comando:
 
-git pull
+    git pull
 
 Abra novamente o arquivo README.md e poderá conferir que temos a versão que atualizamos no servidor, agora localmente.
 
@@ -312,8 +319,10 @@ Desta forma, não podemos utilizar o git init ou criar algo localmente, e sim o 
 
 Abra um terminal de sua preferência, navegue para uma pasta segura e execute o seguinte comando:
 
-git clone https://github.com/USUARIOmeu-primeiro-repositorio.git
+    git clone https://github.com/USUARIOmeu-primeiro-repositorio.git
 
 Sempre que você quiser clonar um repositório, utilizará este padrão, ou seja, git clone https://github.com/**USUARIO**/**REPOSITORIO**.git.
 
 Note que no final tem um ".git". Pronto, temos o repositório local novamente e você pode executar os push/pull para enviar ou receber arquivos nele.
+
+Pronto, estes foram seus primeiros passos com Git e GitHub!
