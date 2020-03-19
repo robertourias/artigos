@@ -193,6 +193,29 @@ Caso esteja com o Emulador aberto e o telefone conectado, você receberá uma me
 
 Você pode remover o telefone ou fechar o emulador, mas pode também executar o comando **flutter devices** para listar os dispositivos conectados.
 
-Em seguida você pode executar o comando **flutter run -d ID\_DO\_DEVICE** para executar o aplicativo no dispositivo desejado.
+Em seguida você pode executar o comando **flutter run -d ID_DO_DEVICE** para executar o aplicativo no dispositivo desejado.
 
 Pronto, se tudo deu certo você tem o Android e Flutter configurados no Windows e pronto para serem utilizados. Agora é só seguir nossa **[Carreira Mobile Developer Flutter](https://balta.io/carreiras/flutter-mobile-developer)** e aprender a criar aplicativos incríveis.
+
+
+Atualizando a versão
+--------------------
+
+Recomendamos que sempre mantenha a versão do Flutter a mais atualizada possível, e para isto, basta abrir um terminal e executar o comando abaixo:
+
+    flutter upgrade
+    
+Deste modo ele fará o download dos novos pacotes e atualizará a versão atual do Flutter. Você pode executar um **flutter --version** para verificar a versã instalada.
+
+Channels
+--------
+
+Sempre que realizamos a instalação, por padrão o Flutter utiliza seu canal **Stable** (Estável), ou seja, apenas o que está testado e pronto para produção.
+
+Caso queira testar algo que está em beta, você pode trocar o canal principal utilizando o comando:
+
+    flutter channel beta
+    
+Lembre-se que não é legal utilizar itens em beta em produção. Para voltar para o canal principal, basta executar o comando:
+
+    flutter channel master
