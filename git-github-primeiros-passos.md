@@ -5,6 +5,27 @@ Git e GitHub - Instalação, Configuração e Primeiros Passos
 
 Git é um sistema de controle de versões distribuídas, enquanto GitHub é uma plataforma que tem o Git como base para versionar nossos códigos.
 
+Índice
+------
+
+*   [Requisitos](#requisitos)
+*   [O que é versionamento de código?](#o-que-é-versionamento-de-código)
+*   [O que é o Git?](#o-que-é-o-git)
+*   [O que é o GitHub?](#o-que-é-o-github)
+*   [Seu Portifólio](#seu-portifólio)
+*   [Criando sua conta](#criando-sua-conta)
+*   [Instalação do Git](#instalação-do-git)
+*   [Configuração](#configuração)
+*   [Criando um Repositório](#criando-um-repositório)
+*   [Iniciando um Repositório](#iniciando-um-repositório)
+*   [Adicionando Itens](#adicionando-itens)
+*   [Ligando os Repositórios](#ligando-os-repositórios)
+*   [Branchs](#branchs)
+*   [Enviando Arquivos](#enviando-os-arquivos)
+*   [Atualizando Arquivos Locais](#atualizando-os-arquivos-locais)
+*   [Utilizando a integração com Visual Studio Code](#utilizando-a-integração-com-visual-studio-code)
+*   [Clonando um Repositório](#clonando-um-repositório)
+
 Requisitos
 ----------
 
