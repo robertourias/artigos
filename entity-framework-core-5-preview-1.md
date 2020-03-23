@@ -22,9 +22,9 @@ Para isto, siga o [processo de instalação do site oficial](https://dotnet.micr
 Feito isto, você pode usar o comando **dotnet --list-sdks** para visualizar todas as SDKs instaladas em sua máquina:
 
     dotnet --list-sdks  
-    2.2.207 [C:\\Program Files\\dotnet\\sdk\]  
-    3.1.102 [C:\\Program Files\\dotnet\\sdk\]  
-    5.0.100-preview.1.20155.7 [C:\\Program Files\\dotnet\\sdk\]
+    2.2.207 [C:\Program Files\dotnet\sdk\]  
+    3.1.102 [C:\Program Files\dotnet\sdk\]  
+    5.0.100-preview.1.20155.7 [C:\Program Files\dotnet\sdk\]
 
 E para saber a versão da SDK rodando, basta executar o comando **dotnet --version**:
 
