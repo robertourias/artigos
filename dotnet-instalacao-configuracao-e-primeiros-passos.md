@@ -14,16 +14,14 @@ O .NET é a plataforma de desenvolvimento de aplicações para diferentes dispos
 *   [LTS](#lts)
 *   [Instalação no Windows](#instalação-no-windows)
 *   [Instalação no Mac](#instalação-no-mac)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
+*   [Instalação no Linux](#instalação-no-linux-ubuntu)
+*   [Instalando versões anteriores](#instalando-versões-anteriores)
+*   [Verificando a versão instalada](#verificando-a-versão-instalada)
+*   [Especificando uma versão](#especificando-uma-versão)
+*   [Criando seu primeiro App](#criando-seu-primeiro-app)
+*   [Restaurando os pacotes](#restaurando-os-pacotes)
+*   [Compilando](#compilando)
+*   [Executando](#executando)
 
 
 O que é um Framework?
@@ -123,15 +121,15 @@ Instalação no Linux (Ubuntu)
 
 O primeiro passo para instalação no Ubuntu 19.10 é o registro dos Feeds de pacotes da Microsoft em seu sistema, que podem ser feitos com as linhas abaixo.
 
-wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb  
-sudo dpkg -i packages-microsoft-prod.deb
+    wget https://packages.microsoft.com/config/ubuntu/19.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb  
+    sudo dpkg -i packages-microsoft-prod.deb
 
 Agora vamos de fato instalar o .NET Core e suas dependências utilizando os comandos abaixo.
 
-sudo apt-get update  
-sudo apt-get install apt-transport-https  
-sudo apt-get update  
-sudo apt-get install dotnet-sdk-3.1
+    sudo apt-get update  
+    sudo apt-get install apt-transport-https  
+    sudo apt-get update  
+    sudo apt-get install dotnet-sdk-3.1
 
 Caso trabalhe com algum sabor Linux diferente, você pode acessar o [guia completo de instalação do .NET Core em sua página oficial](https://dotnet.microsoft.com/download).
 
@@ -149,11 +147,11 @@ Verificando a versão instalada
 
 Com tudo instalado, vamos verificar a versão instalada do .NET em nossa máquina, utilizando o comando abaixo.
 
-dotnet --version
+    dotnet --version
 
 Se tudo ocorreu corretamente, você verá a versão instalada. Você pode verificar todas as versões disponíveis do .NET em seu sistema utilizando o comando.
 
-dotnet --list-sdks
+    dotnet --list-sdks
 
 A [lista completa de comandos disponíveis para você executar](https://docs.microsoft.com/pt-br/dotnet/core/tools/dotnet) pode ser encontrada no site oficial do .NET.
 
@@ -180,11 +178,11 @@ O comando **dotnet** **SEMPRE** olhará este arquivo antes de prosseguir, e nele
 
 Abaixo temos um exemplo de um **Global.json** que especifica que a versão 3.1.100 do .NET Core deve ser utilizada.
 
-{  
-"sdk": {  
-"version": "3.1.100"  
-}  
-}
+    {  
+        "sdk": {  
+            "version": "3.1.100"  
+        }  
+    }
 
 Criando seu primeiro App
 ------------------------
@@ -195,36 +193,36 @@ Existem vários tipos de projetos a serem criados com o comando **dotnet**, voc�
 
 Abra um terminal e navegue para uma pasta segura, em seguida, execute os comandos abaixo.
 
-mkdir myapp  
-cd myapp  
-dotnet new console
+    mkdir myapp  
+    cd myapp  
+    dotnet new console
 
 O que fizemos foi criar uma nova pasta, navegar até ela e criar uma estrutura de um projeto do tipo Console Application com .NET.
 
 O comando abaixo poderia ser utilizado para re-criar todo este processo com apenas um comando.
 
-dotnet new console -o myapp
+    dotnet new console -o myapp
 
 A diferença é que neste último comando, não temos a oportunidade de criar o Global.json antes da execução, ou seja, ele vai criar um projeto sempre com a última versão do SDK instalado.
 
 Caso queira criar um projeto com uma VERSÃO ANTERIOR do .NET Core, execute o seguinte processo.
 
-mkdir myapp  
-cd myapp
+    mkdir myapp  
+    cd myapp
 
 Abra esta pasta com o [Visual Studio Code](https://balta.io/blog/visual-studio-code-instalacao-customizacao) e crie um arquivo **Global.json** na raiz da aplicação, com a seguinte configuração.
 
-{  
-"sdk": {  
-"version": "X.X.XXX"  
-}  
-}
+    {  
+        "sdk": {  
+            "version": "X.X.XXX"  
+        }  
+    }
 
 Não esqueça de substituir o X.X.XXX pela versão do .NET que deseja utilizar. Em adicional, garanta que a SDK desta versão está instalada em seu sistema.
 
 Volte ao terminal e continue a criação da aplicação com o comando abaixo.
 
-dotnet new console
+    dotnet new console
 
 Desta forma, você deve ter criado um Console Application utilizando uma versão anterior do .NET Core SDK instalada em sua máquina.
 
@@ -241,7 +239,7 @@ Embora este pacote para ler o QR Code não venha no .NET por padrão, você pode
 
 Desta forma, sempre que obtemos os fontes de uma aplicação .NET, a primeira coisa que precisamos fazer é restaurar seus pacotes, e isto é feito pelo comando abaixo.
 
-dotnet restore
+    dotnet restore
 
 Note que para executar este comando, você precisa estar na pasta raiz da aplicação.
 
@@ -252,7 +250,7 @@ Nosso próximo passo é compilar nossa aplicação para garantir que todo códig
 
 Para executar a compilação da nossa aplicação, vamos executar o comando abaixo na raiz da aplicação.
 
-dotnet build
+    dotnet build
 
 Ao término da execução, você deve ver uma mensagem de sucesso.
 
@@ -261,7 +259,7 @@ Executando
 
 Nosso último passo é executar nossa aplicação, e isto será feito utilizando o comando abaixo.
 
-dotnet run
+    dotnet run
 
 Neste momento você deve ver o famoso Hello World na tela do seu terminal.
 
