@@ -8,12 +8,12 @@ O .NET é a plataforma de desenvolvimento de aplicações para diferentes dispos
 Índice
 ------
 
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
-*   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
+*   [O que é um Framework](#o-que-é-um-framework)
+*   [.NET Framework, .NET Core, .NET 5](#net-framework-net-core-net-5)
+*   [SDK e Runtime](#sdk-e-runtime)
+*   [LTS](#lts)
+*   [Instalação no Windows](#instalação-no-windows)
+*   [Instalação no Mac](#instalação-no-mac)
 *   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
 *   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
 *   [XXXXXXXXXXXXXXXXXX](#XXXXXXXXXXXXXXXXXXXXXX)
@@ -119,6 +119,7 @@ A instalação do .NET Core (Versão atual) no Mac é relativamente simples. [Ba
 Siga os passos de instalação na tela e pronto, está tudo certo para começarmos a trabalhar com .NET!
 
 Instalação no Linux (Ubuntu)
+----------------------------
 
 O primeiro passo para instalação no Ubuntu 19.10 é o registro dos Feeds de pacotes da Microsoft em seu sistema, que podem ser feitos com as linhas abaixo.
 
