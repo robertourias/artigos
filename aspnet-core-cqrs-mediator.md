@@ -313,11 +313,11 @@ Note que o repositório já retorna nosso Response, e não uma entidade. Além d
 Vamos então resolver as dependências do novo Handler no Startup.cs e adicionar a chamada ao controlador.
 
     public void ConfigureServices(IServiceCollection services)
-            {
-                services.AddControllers();
-                services.AddTransient<ICreateCustomerHandler, CreateCustomerHandler>();
-                services.AddTransient<IFindCustomerByIdHandler, FindCustomerByIdHandler>();
-            }
+    {
+        services.AddControllers();
+        services.AddTransient<ICreateCustomerHandler, CreateCustomerHandler>();
+        services.AddTransient<IFindCustomerByIdHandler, FindCustomerByIdHandler>();
+    }
 
 Desta forma podemos chamar o manipulador no controlador, assim como fizemos com o método POST.
 
