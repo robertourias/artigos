@@ -64,7 +64,9 @@ A partir da versão 3.x do Android Studio, algumas mudanças na instalação da 
 
 Desta forma, o Android agora traz um conjunto de ferramentas que podemos utilizar, como **SDK Manager**, que gerencia as SDKs do Android instaladas.
 
-Se você não alterou nada durante a instalação, estas ferramentas ficam na pasta _**C:\\Users\\USUARIO\\AppData\\Local\\Android\\Sdk\\tools\\bin**_.
+Se você não alterou nada durante a instalação, estas ferramentas ficam na pasta 
+
+    C:\Users\USUARIO\AppData\Local\Android\Sdk\tools\bin
 
 Este caminho também é mostrado na tela **Verify Settings** durante a instalação do Android. Note que a palavra **_USUARIO_** no caminho acima deve ser substituída pelo seu nome de usuário do Windows.
 
