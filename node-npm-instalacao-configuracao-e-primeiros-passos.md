@@ -11,6 +11,7 @@ Node é um executor de código JavaScript bem popular no mundo da programação.
 *   [Requisitos](#requisitos)
 *   [Versões do Node](#versões-do-node)
 *   [Instalação no Windows](#instalação-no-windows)
+*   [Mudando as políticas do Power Shell](#mudando-as-políticas-do-power-shell)
 *   [Instalação no Mac](#instalação-no-mac)
 *   [Instalação no Linux](#instalação-no-linux)
 *   [Verificando a versão instalada](#verificando-a-versão-instalada)
@@ -52,6 +53,19 @@ Instalação no Windows
 A instalação do Node no Windows é relativamente simples, basta acessar o [site oficial e fazer download](https://nodejs.org/en/) do instalador. Até a escrita deste artigo a versão **Current** do Node é **_13.11.0_**.
 
 Execute o instalador, siga as instruções na tela e pronto, o Node está instalado e adicionado ao **PATH** do Windows. Feche todos os terminais abertos e você está pronto para prosseguir.
+
+Mudando as políticas do Power Shell
+-----------------------------------
+
+Em alguns casos, durante a execução de comandos NPM no Windows, você poderá receber um erro com a seguinte mensagem: *"O arquivo XXXX não pode ser carregado porque a execução de scripts foi desabilitada neste sistema"*
+
+Isto ocorre pois as políticas de execução do Power Shell em seu sistema não estão habilitada. Para resolver este problema, feche todos os terminais abertos e abra um novo Power Shell em modo administrador (Clicar com botão direito do mouse sobre o ícone do Power Shell e acessar a opção **Executar como Administrador**).
+
+Nesta nova janela que se abriu, como administrador, execute o seguinte comando:
+    
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+    
+Feche novamente a janela e reabra o Power Shell ou qualquer terminal que esteja utilizando. Desta vez não precisa ser como administrador. O erro deve parar de acontecer.
 
 Instalação no Mac
 -----------------
