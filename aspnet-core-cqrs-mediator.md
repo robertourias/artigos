@@ -38,24 +38,26 @@ Você pode usar entidades anêmicas e a abordagem Data Driven como mostro no cur
 
 Na verdade, vamos ser bem pragmáticos e "simular" que temos uma entidade rica, com propriedades privadas, objetos de valor e testes, mas no caso teremos apenas o código abaixo (Domain/Entities/Customer.cs).
 
-    using System;
-    
-    namespace Shop.Domain.Entities
+```csharp
+using System;
+
+namespace Shop.Domain.Entities
+{
+    public class Customer
     {
-        public class Customer
+        public Customer(string name, string email)
         {
-            public Customer(string name, string email)
-            {
-                Id = Guid.NewGuid();
-                Name = name;
-                Email = email;
-            }
-    
-            public Guid Id { get; private set; }
-            public string Name { get; private set; }
-            public string Email { get; private set; }
+            Id = Guid.NewGuid();
+            Name = name;
+            Email = email;
         }
+
+        public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string Email { get; private set; }
     }
+}
+```
 
 O quem importa é saber que funciona para ambos modelos e entender a implementação do CQRS básico aqui.
 
