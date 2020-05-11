@@ -1,8 +1,8 @@
 # Flutter SQLite
 
-![Flutter SQLite](https://baltaio.blob.core.windows.net/blog/flutter-sqlite.jpg)
-
 Flutter SQLite é a implementação de um dos bancos de dados locais mais famosos do mundo para o Flutter, utilizado através do pacote SQFlite.
+
+![Flutter SQLite](https://baltaio.blob.core.windows.net/blog/flutter-sqlite.jpg)
 
 Todo este artigo é baseado no curso [Flutter: App Android e iOS nativo, SQLite, Biometria, Câmera, GPS e Google Maps](https://balta.io/cursos/flutter-android-ios-app-nativo-sqlite-biometria-camera-gps-google-maps) onde implementamos na prática o SQLite em um App nativo completo para Android e iOS, compartilhando o mesmo codebase.
 
@@ -16,11 +16,11 @@ Vou deixar aqui também um vídeo onde falo um pouco mais sobre **SQL Injection*
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/6mdIE0c3K_4/0.jpg)](http://www.youtube.com/watch?v=6mdIE0c3K_4)
 
-Além do SQLite havia também o Hive, que é um banco de dados local, NoSQL, escrito em Dart! Parece o casamento perfeito, porém existem alguns riscos que não gostaria de correr neste momento, além dele ser menos popular que o SQLite.
+Além do Flutter SQLite havia também o Hive, que é um banco de dados local, NoSQL, escrito em Dart! Parece o casamento perfeito, porém existem alguns riscos que não gostaria de correr neste momento, além dele ser menos popular que o SQLite.
 
 ## Dependências
 
-Para trabalhar com SQLite no Flutter precisamos utilizar o pacote `sqflite`, que nos irá prover tudo que precisamos a nível de banco de dados.
+Para trabalhar com Flutter SQLite precisamos utilizar o pacote `sqflite`, que nos irá prover tudo que precisamos a nível de banco de dados.
 
 Como o SQLite é um banco de dados local, vamos precisar salvar ele no dispositivo, então precisamos de dois pacotes adicionais, o `path` e `path_provider`.
 
@@ -34,7 +34,7 @@ sqflite:
 
 ## Script de criação do banco
 
-O primeiro passo para começar com SQLite é criar o banco de dados, e neste momento não temos como fugir da escrita de código SQL.
+O primeiro passo para começar com Flutter SQLite é criar o banco de dados, e neste momento não temos como fugir da escrita de código SQL.
 
 Como o foco deste artigo não é a linguagem SQL, vou deixar o código que utilizei para criar o banco de dados no curso 7201.
 
@@ -54,7 +54,7 @@ const String CREATE_CONTACTS_TABLE_SCRIPT = "CREATE TABLE contacts(id INTEGER PR
 
 No SQLite não ficamos conectados ao banco o tempo todo, ao invés disso, abrimos o banco (Nos conectamos), executamos nossas consultas e depois fechamos tudo.
 
-Desta forma, sempre que formos executar algo no SQLite precisamos da função `openDatabase` para nos conectar (Abrir) o banco antes.
+Desta forma, sempre que formos executar algo no Flutter SQLite precisamos da função `openDatabase` para nos conectar (Abrir) o banco antes.
 
 Para facilitar, minha sugestão é criar um método que retorna o banco de dados, se possível aplicando o Design Patter - Repository Pattern para abstrair este acesso à dados das interfaces.
 
