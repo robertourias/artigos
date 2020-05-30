@@ -37,3 +37,5 @@ Alguns servidores como IIS e Nginx possuem uma compressão nativa para arquivos 
 Em adicional, é desnecessário comprimir imagens. Os formatos mais comuns como PNG e JPG por exemplo, já são compactados. O mesmo vale para arquivos muito pequenos, menores de 1KB por exemplo.
 
 Nestes casos, a relação custo X benefício entre a compressão e tráfego dos arquivos acaba não compensando.
+
+https://docs.microsoft.com/pt-br/aspnet/core/performance/response-compression?view=aspnetcore-3.1
