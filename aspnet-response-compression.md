@@ -1,4 +1,4 @@
-# ASP.NET Response Compression
+# ASP.NET Compressão de Resposta
 
 O recurso de compressão de resposta está presente no ASP.NET de forma geral, o que significa que ele pode ser utilizado em projetos MVC, Razor Pages, Websites e APIs.
 
@@ -102,4 +102,89 @@ public class Startup
 
 Como comentado anteriormente, os Middlewares são executados na ordem que são declarados, então é importante definir o <code>UseResponseCompression</code> antes de qualquer outro Middleware de resposta.
 
-https://docs.microsoft.com/pt-br/aspnet/core/performance/response-compression?view=aspnetcore-3.1
+## Compondo a requisição
+
+Após a adição e configuração do pacote de compressão, já podemos executar a aplicação e fazer uma requisição para qualquer URL dela.
+
+Para uma melhor visualização, recomendamos os testes em uma aplicação ASP.NET MVC, utilizando <code>dotnet net mvc</code> por exemplo.
+
+Com tudo pronto, vamos realizar a requisição sem nenhuma compressão especificada. Abaixo os exemplos são realizados utilizando **CURL**, porém você pode utilizar outras ferramentas como **Insomnia**, **Fiddler** e **Postman**.
+
+```
+curl -i -H "Content-Type: text/html" https://localhost:5001
+```
+
+Como retorno podemos esperar o HTML padrão que temos nas aplicações ASP.NET MVC, totalmente legível para nós.
+
+Porém, se informarmos o <code>Accept-Encoding: br</code> no cabeçalho, conforme mostrado abaixo, devemos esperar um retorno compactado, ilegível.
+
+```
+curl -i -H "Accept-Encoding: br" -H "Content-Type: text/html" https://localhost:5001
+```
+
+> **IMPORTANTE** - Algumas ferramentas podem descompactar automaticamente as respostas e exibir o HTML formatado. Verifique sempre o tamanho (Size) das respostas.
+
+## Utilizando outros providers
+
+No exemplo anterior vimos como utilizar a compressão padrão, porém, como vimos na primeira sessão deste artigo, podemos utilizar outros formatos de compressão como **Brotli Compression**.
+
+Para utilizar diferentes tipos de compressão, podemos utilizar as opções do método <code>AddResponseCompression</code> juntamente com a opção <code>Providers.Add\<PROVIDER></code>. Os tipos de compressão serão executados na ordem que são adicionados aqui.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddResponseCompression(options =>
+    {
+        options.Providers.Add<BrotliCompressionProvider>();
+        options.Providers.Add<GzipCompressionProvider>();
+        options.Providers.Add<CustomCompressionProvider>();
+    });
+}
+```
+
+## Alterando o nível de compressão
+
+Por fim, conforme comentamos no começo deste artigo, o ASP.NET toma conta da decisão sobre a otimização da compressão, levando em conta o tamanho da resposta e esforço necessário para codificação.
+
+Para alterar este fator e ter controle sobre o nível de compressão a ser executado, podemos dentro de cada provider, especificar seu <code>Compression Level</code>.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddResponseCompression();
+
+    services.Configure<BrotliCompressionProviderOptions>(options =>
+    {
+        options.Level = CompressionLevel.Fastest;
+    });
+}
+```
+
+Desta forma, o ASP.NET Core sempre optará pela compressão mais rápida possível, mesmo que o provider seja otimizado para compactação.
+
+Abaixo segue a tabela com as opções de **níveis de compressão** disponíveis no ASP.NET.
+
+| Nível                          | Descrição              |
+| ------------------------------ | ---------------------- |
+| CompressionLevel.Fastest       | Favorece a performance |
+| CompressionLevel.NoCompression | Sem compressão         |
+| CompressionLevel.Optimal       | Favorece a compressão  |
+
+### Tipos de documento
+
+Por padrão, a compressão pode ser adicionada aos seguintes tipos de documento (**MIME Types**):
+
+- application/javascript
+- application/json
+- application/xml
+- text/css
+- text/html
+- text/json
+- text/plain
+- text/xml
+
+Caso queira comprimir algum tipo de documento não especificada nesta lista, você pode criar um [provider customizado](https://docs.microsoft.com/pt-br/aspnet/core/performance/response-compression?view=aspnetcore-3.1#custom-providers) como mostrado na documentação oficial do ASP.NET.
+
+### Fonte
+
+- [Documentação oficial do ASP.NET](https://docs.microsoft.com/pt-br/aspnet/core/performance/response-compression?view=aspnetcore-3.1)
