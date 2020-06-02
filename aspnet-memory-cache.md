@@ -89,29 +89,50 @@ Vamos então implementar o código que fará a tratativa e tomara a decisão sob
 ```csharp
 public IActionResult Index([FromServices]IMemoryCache cache)
 {
-    var units = cache.GetOrCreate(UNITS_CACHE_KEY, item =>
+    var date = cache.GetOrCreate("MyCacheKey", item =>
     {
         item.SlidingExpiration = TimeSpan.FromSeconds(10);
         return DateTime.Now;
     });
 
-    return View("Cache", cacheEntry);
+    return View("Cache", date);
 }
 ```
 
-https://docs.microsoft.com/pt-br/aspnet/core/performance/caching/memory?view=aspnetcore-3.1
-http://www.macoratti.net/19/06/aspc_cache1.htm
-///
+A opção <code>SlidingExpiration</code> define quanto tempo o cache vai durar na memória. Temos também a opção <code>AbsoluteExpirationRelativeToNow</code> que define um tempo de expiração relativo a data atual.
+
+## Dados complexos
+
+No exemplo anterior, utilizamos uma simples data e hora como retorno, porém, podemos retornar dados mais estruturados e até chamar uma função.
+
 ```csharp
-public async Task<IActionResult> CacheGetOrCreateAsynchronous()
-{
-    var cacheEntry = await
-        _cache.GetOrCreateAsync(CacheKeys.Entry, entry =>
-        {
-            entry.SlidingExpiration = TimeSpan.FromSeconds(3);
-            return Task.FromResult(DateTime.Now);
+    var products = cache.GetOrCreate("MyCacheKey", entry =>
+   	    {
+  	        entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+	       return repository.GetProducts();
         });
-
-    return View("Cache", cacheEntry);
-}
+    return products;
 ```
+
+Neste caso, se um cache com a chave <code>MyCacheKey</code> não for encontrado, a função <code>GetProducts</code> do repositório, e os produtos serão cacheados.
+
+## Alterando a prioridade
+
+Como comentamos anteriormente, o cache possui uma prioridade, sendo os menos prioritários, mais propensos a serem excluidos caso haja necessidade de mais memória no servidor.
+
+Esta prioridade é definida pelo método <code>SetPriority</code> utilizando o enumerador <code>CacheItemPriority</code>.
+
+```csharp
+    var products = cache.GetOrCreate("MyCacheKey", entry =>
+   	    {
+  	        entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+            entry.SetPriority(CacheItemPriority.High);
+	       return repository.GetProducts();
+        });
+    return products;
+```
+
+## Fontes
+
+ * [Documentação Oficial](https://docs.microsoft.com/pt-br/aspnet/core/performance/caching/memory?view=aspnetcore-3.1)
+ * [Macoratti](http://www.macoratti.net/19/06/aspc_cache1.htm)
