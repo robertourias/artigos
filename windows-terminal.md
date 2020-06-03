@@ -14,6 +14,10 @@ Embora houvessem alternativas como o Hyper.js e CMDER, é sempre bom ter algo of
 
 ![Windows Terminal](https://baltaio.blob.core.windows.net/blog/windows-terminal-001.PNG "Windows Terminal")
 
+#### Visual Studio Code
+
+![Visual Studio Code](https://baltaio.blob.core.windows.net/blog/windows-terminal-003.PNG "Visual Studio Code")
+
 ## Instalação
 
 Caso ainda não possua o Windows Terminal instalado, você pode fazer seu Download em uma das fontes oficiais listadas abaixo.
