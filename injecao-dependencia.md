@@ -167,6 +167,8 @@ Sabemos que os testes de unidade NÃO PODEM depender de serviços externos, ent�
 
 ## O que é injeção de dependência?
 
+Dependency Injection (Injeção de dependência) ou DI é a técnica que implementa o padrão IoC que veremos mais abaixo neste artigo.
+
 O ideal neste cenário, é que o nosso controlador dependa de serviço de cálculo de frete, mas que não seja responsável por gerenciá-lo.
 
 Contextualizando, você chga na empresa, no seu primeiro dia de trabalho e precisa de um computador para trabalhar. Quem vai te prover isto? Como isto chega até você? Isto não é sua responsabilidade (Pelo menos não deveria ser).
@@ -325,4 +327,42 @@ Entende como DI é apenas um pedacinho no topo do Iceberg?
 
 ## Service Locator
 
-## Ciclos de vida
+Nosso trabalho ainda não terminou. Na verdade nós geramos mais trabalho, mas a boa notícia é que vamos automatizar ele.
+
+Todas as dependências que geramos, e no mundo real não serão poucas, precisam ser resolvidas em algum momento.
+
+Toda vez que dizemos "isto não é problema meu", o problema não deixa de existir, só passa para um lugar diferente.
+
+Convenhamos que seria suicídio resolver todas estas dependências manualmente. Imagina se houvesse uma nova implementação de um contrato? Teria uma refatoração imensa.
+
+Para isto, existe o **Service Locator**, um padrão que nos auxilia a descobrir a implementação de cada interface e instanciar ela.
+
+Os **Service Locators** também são comumente encontrados como **IoC Containers**, que são suas implementações, sendo as mais comuns o Unit e Ninject.
+
+O ASP.NET traz uma implementação padrão que resolve nossas dependências, e sinceramente, atende muito bem a maioria dos cenários.
+
+Particularmente, faz um bom tempo que não uso um pacote externo para resolver as dependências.
+
+Para resolver as dependências utilizando o padrão do ASP.NET, basta adicionar o <code>AddTransient</code>, <code>AddScoped</code> ou <code>AddSingleton</code> no método <code>ConfigureServices</code> do <code>Startup</code>.
+
+```csharp
+public class Startup
+{
+    ...
+    public void ConfigureServices(IServiceCollection services)
+    {
+        ...
+        services.AddTransient<IDeliveryFeeService, DeliveryFeeService>();
+        ...
+    }
+    ...
+}
+```
+
+Para saber mais sobre DI no ASP.NET Core, [veja este artigo](https://balta.io/blog/aspnet-core-dependency-injection) que publiquei há um tempo atrás.
+
+## Fontes
+* [ASP.NET Core DI](https://docs.microsoft.com/pt-br/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1)
+* [Macoratti](http://www.macoratti.net/11/07/ioc_di1.htm)
+* [gago.io](https://gago.io/blog/ioc-di-voce-esta-fazendo-isso-errado/)
+* [Tutorials Teacher](https://www.tutorialsteacher.com/ioc/introduction)
