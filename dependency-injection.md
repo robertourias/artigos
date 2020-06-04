@@ -1,10 +1,12 @@
-# DI, IoC, DIP e Service Locator
+# Dependency Injection, IoC, DIP e Service Locator
+
+Dependency Injection (Injeção de dependência) ou DI é a técnica que implementa o padrão IoC que veremos mais abaixo neste artigo. 
 
 Quando falamos em arquitetura de software, independente da nossa aplicação ser backend, frontend ou mobile, sempre queremos algo parecido, a organização.
 
 Organizar bem as aplicações permite testes melhores, facilita encontrar bugs e principalmente crescer. Buscamos, quando novas funcionalidades forem adicionadas, que nossa aplicação não resulte em um Frankstrein, toda remendada.
 
-Mas o que a **Injeção de Dependência** tem a ver com isto? O **IoC**, **DIP** e **Service Locator** tem em comum com ela?
+Mas o que a **Injeção de Dependência (Dependency Injection)** tem a ver com isto? O **IoC**, **DIP** e **Service Locator** tem em comum com ela?
 
 Vamos detalhar tudo aqui neste artigo.
 
@@ -115,7 +117,7 @@ Atingindo este objetivo, sempre que houver algum problema com conexão ao banco 
 
 ## Divisão de responsabilidades
 
-Claro que a injeção de dependência não é a solução para tudo, mas fica mais fácil explicar quando estamos alinhados. Então, partindo deste código, o que e como você mudaria?
+Claro que a injeção de dependência (Dependency Injection) não é a solução para tudo, mas fica mais fácil explicar quando estamos alinhados. Então, partindo deste código, o que e como você mudaria?
 
 Vamos dar nosso primeiro passo e separar por exemplo, a chamada a API de cálculo de frete da nossa aplicação.
 
@@ -165,7 +167,7 @@ Embora a refatoração e reuso da obtenção do valor do frete tenha sido feita,
 
 Sabemos que os testes de unidade NÃO PODEM depender de serviços externos, então como você realizaria um teste deste método?
 
-## O que é injeção de dependência?
+## O que é Dependency Injection?
 
 Dependency Injection (Injeção de dependência) ou DI é a técnica que implementa o padrão IoC que veremos mais abaixo neste artigo.
 
