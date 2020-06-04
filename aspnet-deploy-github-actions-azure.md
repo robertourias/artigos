@@ -254,7 +254,163 @@ O próximo passo é definir quais passos serão executados para publicar a aplic
 
 #### Obtendo o código
 
----
+Quando criamos a máquina (Ubuntu) no passo anterior, ela vem apenas com o básico do sistema operacional, ou seja, precisamos instalar o .NET, baixar nossos fontes e tudo mais.
+
+O primeiro passo no caso é obter o código que está no GitHub e aqui entra a magia dos GitHub Actions.
+
+Como você pode imaginar, diversas pessoas ao redor do mundo realizam deploy de aplicações ASP.NET Core no Azure todos os dias, nós não somos diferentes.
+
+Os GitHub Actions são conjuntos de comandos públicos que podemos reutilizar em nossos Workflows através da palavra <code>uses</code>.
+
+Para obter o código da branch master do nosso repositório por exemplo, pode ser realizado pela [action checkout@master](https://github.com/actions/checkout), que é pública no GitHub.
+
+Em resumo, diversos passos que precisaríamos escrever, temos pronto, podendo apenas ser reutilizado.
+
+```yaml
+name: Deploy para o azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+```
+
+Utilizamos então o <code>uses</code> para definir nosso primeiro passo (Steps) que fará o download do nosso código do GitHub.
+
+#### Instalação do .NET
+
+Nosso próximo passo é instalar o .NET, e novamente vamos utilizar uma action pronta. Em adicional temos a versão do .NET sendo especificada com o <code>with</code>.
+
+```yaml
+name: Deploy para o azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.102"
+```
+
+#### .NET Build
+
+Para compilar nossa aplicação não precisamos de nenhuma action adicional, visto que já temos o .NET instalado (Passo anterior). Então precisamos apenas executar o comando <code>dotnet build</code> como mostrado abaixo.
+
+```yaml
+name: Deploy para o azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.102"
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+```
+
+> Note que executamos o dotnet build com a flag --configuration Release. Caso contrário sua aplicação será compilada em modo Debug.
+
+#### .NET Publish
+
+Para publicar a aplicação, podemos executar o <code>dotnet publish</code>, que assim como o passo anterior, não requer nenhuma action adicional.
+
+```yaml
+name: Deploy para o azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.102"
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+      - name: dotnet publish
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+```
+
+#### Autenticando
+
+Com tudo pronto, precisamos agora publicar nossa aplicação no Azure e para isto precisamos nos autenticar primeiro. Neste passo utilizaremos as credenciais armazenadas nos Secrets do repositório.
+
+```yaml
+name: Deploy para o azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.102"
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+      - name: dotnet publish
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+
+      - name: Azure Login
+        uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_DEPLOY }}
+```
+
+Qualquer segredo armazenado no seu repositório fica encriptado e pode ser acessado por <code>\${{ secrets.CHAVE }}</code> em seu YAML.
+
+#### Deploy
+
+Nosso último passo é realizar o deploy e com isto fechamos nosso Workflow. Está tudo pronto para realizar a integração.
 
 ```yaml
 name: Deploy para o azure
@@ -295,17 +451,26 @@ jobs:
           package: ${{env.DOTNET_ROOT}}/myapp
 ```
 
+### Enviando o Workflow
+
+Até o momento, este Workflow está local. Vamos realizar o envio dele para branch master com os comandos abaixo, ou visualmente pelo **Visual Studio Code** (<kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd>).
+
+```
 git add --all
 git commit -m "Primeiro teste"
 git push -u origin master
+```
 
+## Integrando o Azure o GitHub
+
+O último passo que precisamos realizar é dizer ao Azure que o deploy desta aplicação será feito pelo GitHub, e isto é feito pelo **Deployment Source**, utilizando o comando abaixo.
+
+```
 az webapp deployment source config --name aspnetghcdeploy --resource-group aspnetghcdeploy --repo-url https://github.com/andrebaltieri/aspnetghcdeploy --branch master
+```
 
-https://github.com/andrebaltieri/aspnetghcdeploy/settings/secrets
+Neste momento, qualquer informação que você enviar para a branch master (<code>git push -u origin master</code>) será automaticamente publicado no Azure.
 
-git checkou -b dev
-altera
-pusha
-PR na master
+Você pode acompanhar AO VIVO tudo que está acontecendo durante o deploy na aba ACTIONS do seu repositório, que fica na URL [https://github.com/USUARIO/REPOSITORIO/actions](https://github.com/USUARIO/REPOSITORIO/actions).
 
-## Criando uma nova Branch
+Não esqueça de conferir o vídeo no começo deste artigo para saber mais sobre GitHub, ASP.NET, Azure e variáveis de ambiente.
