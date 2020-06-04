@@ -244,7 +244,7 @@ Além disso, em ambientes maiores, o tempo de deploy das aplicações é importa
 
 Imagina o deploy e execução destes testes em 20, 30 máquinas ao mesmo tempo? Por estes e outros motivos não devemos depender de itens externos nos testes.
 
-## DIP e IoC
+## DIP
 
 Você deve estar se perguntando, como resolver este problema então? Bem, a resposta está novamente no SOLID, mais especificamente na letra D.
 
