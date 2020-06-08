@@ -1,5 +1,7 @@
 # ASP.NET Memory Cache
 
+![ASP.NET Memory Cache](https://baltaio.blob.core.windows.net/blog/aspnet-memory-cache.jpg)
+
 O Memory Cache é utilizado para otimizar a performance das nossas aplicações, evitando requisições desnecessarias a fontes de dados.
 
 ## Cache
