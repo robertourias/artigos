@@ -1,8 +1,9 @@
-# ASP.NET Cache em Memória
+# ASP.NET Memory Cache
 
-O cache em memória é utilizado para otimizar a performance das nossas aplicações, evitando requisições desnecessarias a fontes de dados.
+O Memory Cache é utilizado para otimizar a performance das nossas aplicações, evitando requisições desnecessarias a fontes de dados.
 
 ## Cache
+
 É comum termos diversos dados das nossas aplicações que não mudam com frequência. Itens como **estado civil**, **unidade de medida** e até mesmo algumas **categorias**.
 
 Tudo que tem baixa mutabilidade, pode ser cacheado, evitando que a requisição precise chegar até a fonte de dados.
@@ -13,14 +14,15 @@ O cache pode ser feito em diversos lugares, incluindo **memória**, como veremos
 
 Essa renovação significa que a próxima requisição irá novamente até a fonte de dados e o processo de cacheamento se reiniciará.
 
-Quando usado com sabedoria, o cache pode otimizar **MUITO** a performance das aplicações. Imagina quantos *hits* no banco podem ser evitados com um bom cache?
+Quando usado com sabedoria, o cache pode otimizar **MUITO** a performance das aplicações. Imagina quantos _hits_ no banco podem ser evitados com um bom cache?
 
 > Em cenários de larga escala, é comum cachear itens por algumas horas ou até minutos apenas. O importante é reduzir a carga no banco.
 
 Então, não tenha medo do cache, se não precisa de informações em tempo real, talvez ela possa ser cacheada de alguma forma.
 
-## Cache em memória
-Um dos caches mais comuns é o **cache em memória**, onde armazenamos as informações na memória da servidor.
+## Memory Cache
+
+Um dos caches mais comuns é o **Memory Cache**, onde armazenamos as informações na memória da servidor.
 
 Para realizar esta ação, temos uma **chave** e um **tempo de expiração** para o cache, seguido do seu valor.
 
@@ -28,7 +30,7 @@ Feito isto, podemos verificar se os dados requisitados pelo usuário já estão 
 
 Caso não haja um cache com a chave informada, recorremos ao processo normal de acesso ao banco, também chamado de **fallback**.
 
-O cache em memória tem dois pontos extremamente importantes que você precisa levar em conta antes de implementar, a **memória** e a **escalabilidade**.
+O Memory Cache tem dois pontos extremamente importantes que você precisa levar em conta antes de implementar, a **memória** e a **escalabilidade**.
 
 Como o nome diz, estamos colocando os dados em memória, e eles permanecerão lá até expirar. Posteriormente, serão renovados, ocupando novamente a memória.
 
@@ -62,19 +64,19 @@ Como todo Middleware, ele deve ser configurado no <code>ConfigureServices</code>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
-{    
+{
     services.AddMemoryCache();
 }
 ```
 
-Esta é toda configuração que precisamos para utilizar o cache em memória, e deste ponto em diante um serviço chamado <code>IMemoryCache</code> estará disponível para nós.
+Esta é toda configuração que precisamos para utilizar o Memory Cache, e deste ponto em diante um serviço chamado <code>IMemoryCache</code> estará disponível para nós.
 
 ## Utilizando o cache
 
 O primeiro passo para trabalhar com cache é recuperar uma instância do serviço <code>IMemoryCache</code> e isto pode ser feito utilizando DI.
 
 ```csharp
-public IActionResult Index([FromServices]IMemoryCache cache) 
+public IActionResult Index([FromServices]IMemoryCache cache)
 {
     ...
 }
@@ -134,5 +136,5 @@ Esta prioridade é definida pelo método <code>SetPriority</code> utilizando o e
 
 ## Fontes
 
- * [Documentação Oficial](https://docs.microsoft.com/pt-br/aspnet/core/performance/caching/memory?view=aspnetcore-3.1)
- * [Macoratti](http://www.macoratti.net/19/06/aspc_cache1.htm)
+- [Documentação Oficial](https://docs.microsoft.com/pt-br/aspnet/core/performance/caching/memory?view=aspnetcore-3.1)
+- [Macoratti](http://www.macoratti.net/19/06/aspc_cache1.htm)
