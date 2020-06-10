@@ -105,6 +105,10 @@ public IActionResult Index([FromServices]IMemoryCache cache)
 
 A opção <code>SlidingExpiration</code> define quanto tempo o cache vai durar na memória. Temos também a opção <code>AbsoluteExpirationRelativeToNow</code> que define um tempo de expiração relativo a data atual.
 
+> **Atualização em 2020/06/10** - SlidingExpiration obtém ou define por quanto tempo uma entrada de cache pode ficar inativa (por exemplo, não acessada) antes de ser removida. Isso não estenderá o tempo de vida da entrada além do término absoluto (se definido).
+>
+> <small>Sugestão enviada pelo [Rodolfo Fadino Júnior](https://rodolfofadino.com.br/)</small>
+
 ## Dados complexos
 
 No exemplo anterior, utilizamos uma simples data e hora como retorno, porém, podemos retornar dados mais estruturados e até chamar uma função.
