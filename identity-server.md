@@ -53,6 +53,7 @@ O IS também é muito customizável, o que significa que podemos alterar muita c
 ## Autenticação no cenário atual
 
 ![Cenário atual de autenticação](https://identityserver4.readthedocs.io/en/latest/_images/appArch.png)
+
 <small>Fonte: Documentação oficial do Identity Server</small>
 
 Um cenário comum (Não é uma regra) que temos hoje é a comunicação entre diversas aplicações e APIs com nossos servidores, como mostrado na imagem acima.
@@ -70,6 +71,7 @@ Na primeira camada, onde ficam as aplicações (Browser, Desktop, Mobile e até 
 A proposta de um servidor de identidade é justamente centralizar este recurso comum entre os Apps, a autenticação. Imagina precisar escrever um processo de login para cada uma das Apps?
 
 ![Processo reestruturado](https://identityserver4.readthedocs.io/en/latest/_images/protocols.png)
+
 <small>Fonte: Documentação oficial do Identity Server</small>
 
 Esta seria uma visão do mesmo diagrama, mas de uma forma mais estruturada, utilizando um servidor de autenticação e protocolos de autenticação como **OAuth2**.
