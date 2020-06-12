@@ -103,5 +103,25 @@ O Identity Server é uma implementação do Open ID Connect/OAuth 2.0 no formato
 
 Basicamente, podemos ter qualquer lógica dentro das APIs ou aplicações que isto não afetará a implementação do IS, visto que ele abstrai a parte de autenticação das aplicações apenas.
 
+## Outras terminologias
+
+### Usuário ou User
+A pessoa que utiliza um cliente registrado para obter acesso à um recurso.
+
+### Cliente ou Client
+Software que requisita os Tokens do Identity Server, tanto para autenticar outros serviços e softwares quanto pessoas. Um cliente **deve ser registrado** no servidor de identidade antes de requisitar um Token.
+
+### Resources ou Recursos
+São as informações que queremos proteger com nosso servidor de identitdade. Todo recurso tem um nome único e os clientes utilizam este nome único para especificar qual recurso eles querem acessar.
+
+### Identity Data
+Informações de identidade também são conhecidas como **Claims** e são referentes ao usuário, como nome ou endereço de E-mail.
+
+### Identity Token
+Resultado de um processo de autenticação que contém o mínimo de identificação possível sobre o usuário, também chamado de **subject** ou **subject claim**, junto a informação de como e quando ele se autenticou.
+
+### Access Token
+Permite acesso á um recurso. Os clientes requisitam tokens de acesso e os encaminham a cada requisição para as APIs (Recursos). Os Tokens de acesso contém informações tanto sobre o cliente quanto sobre o usuário e a API utiliza esta informação para autorizar o acesso à seus dados.
+
 ## Fontes
  * [Documentação do Identity Server](https://identityserver4.readthedocs.io/)
