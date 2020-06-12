@@ -123,5 +123,27 @@ Resultado de um processo de autenticação que contém o mínimo de identificaç
 ### Access Token
 Permite acesso á um recurso. Os clientes requisitam tokens de acesso e os encaminham a cada requisição para as APIs (Recursos). Os Tokens de acesso contém informações tanto sobre o cliente quanto sobre o usuário e a API utiliza esta informação para autorizar o acesso à seus dados.
 
+## Especificações suportadas
+
+### OpenID Connect
+- OpenID Connect Core 1.0
+- OpenID Connect Discovery 1.0
+- OpenID Connect Session Management 1.0
+- OpenID Connect Front-Channel Logout 1.0
+- OpenID Connect Back-Channel Logout 1.0
+
+### OAuth 2.0
+- OAuth 2.0 (RFC 6749)
+- OAuth 2.0 Bearer Token Usage (RFC 6750)
+- OAuth 2.0 Multiple Response Types
+- OAuth 2.0 Form Post Response Mode
+- OAuth 2.0 Token Revocation (RFC 7009)
+- OAuth 2.0 Token Introspection (RFC 7662)
+- Proof Key for Code Exchange (RFC 7636)
+- JSON Web Tokens for Client Authentication (RFC 7523)
+- OAuth 2.0 Device Authorization Grant (RFC 8628)
+- OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens (RFC 8705)
+- JWT Secured Authorization Request
+
 ## Fontes
  * [Documentação do Identity Server](https://identityserver4.readthedocs.io/)
