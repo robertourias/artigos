@@ -39,7 +39,7 @@ Feche novamente a janela e reabra o Power Shell ou qualquer terminal que esteja 
 
 ## Posh-git e Oh-my-posh
 
-Para esta customização vamos precisar de dois módulos adicionais, o **Posh-git** e **Oh-my-posh**, que pode mser instalados utilizando os comandos abaixo no Windows Terminal.
+Para esta customização vamos precisar de dois módulos adicionais, o **Posh-git** e **Oh-my-posh**, que podem ser instalados utilizando os comandos abaixo no Windows Terminal.
 
 ```ps
 Install-Module posh-git -Scope CurrentUser
