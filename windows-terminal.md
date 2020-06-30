@@ -95,16 +95,19 @@ Então realize a alteração da configuração <code>fontFace</code> conforme mo
 "fontFace":  "Cascadia Code PL"
 ```
 
-## Configuraçõe adicionais
+## Configurações adicionais
 
 Em adicional, eu gosto de sempre limpar a tela do terminal em seu início, e isto pode ser feito utilizando a linha <code>Clear-Host</code> como mostrado abaixo. Também podemos adicionar uma mensagem de boas vindas utilizando o <code>Write-Host</code>.
 
-Para finalizar, podemos trocar o nome da variável que exibe o caminho atual, para ter algo mais curto, sem o nome do usuário/computador por exemplo. Isto é feito utilizando o <code>\$DefaultUser</code> como mostrado abaixo.
+Para finalizar, podemos trocar o nome da variável que exibe o caminho atual, para ter algo mais curto, sem o nome do usuário/computador por exemplo. Isto é feito utilizando o <code>\$DefaultUser</code>.
+
+Execute novamente o código em um terminal para abrir seu perfil atual no VS Code em modo de edição. 
+```
+code $PROFILE
+```
+Em seguida, acrescente as seguintes linhas ao arquivo:
 
 ```ps
-Import-Module posh-git
-Import-Module oh-my-posh
-Set-Theme Paradox
 Clear-Host
 Write-Host "balta.io"
 $DefaultUser = 'balta'
