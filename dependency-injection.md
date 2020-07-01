@@ -173,7 +173,7 @@ Dependency Injection (Injeção de dependência) ou DI é a técnica que impleme
 
 O ideal neste cenário, é que o nosso controlador dependa de serviço de cálculo de frete, mas que não seja responsável por gerenciá-lo.
 
-Contextualizando, você chga na empresa, no seu primeiro dia de trabalho e precisa de um computador para trabalhar. Quem vai te prover isto? Como isto chega até você? Isto não é sua responsabilidade (Pelo menos não deveria ser).
+Contextualizando, você chega na empresa, no seu primeiro dia de trabalho e precisa de um computador para trabalhar. Quem vai te prover isto? Como isto chega até você? Isto não é sua responsabilidade (Pelo menos não deveria ser).
 
 Voltamos ao S do SOLID. Qual a responsabilidade da ação de realizar um pedido? Realizar um pedido!!!!
 
@@ -187,7 +187,7 @@ Vamos dar mais um passo adiante e refatorar nosso código, explicitando a depend
 
 No IoC nós externalizamos as responsabilidade invertendo o controle. Ao invés do controlador ser responsável pelo controle do serviço de frete, ele apenas depende dele.
 
-Podemos notar o uso do IoC sempre que vemos classes ou interfaces sendo passadas no método contrutor.
+Podemos notar o uso do IoC sempre que vemos classes ou interfaces sendo passadas no método construtor.
 
 ```csharp
 public class OrderController : Controller
@@ -278,7 +278,7 @@ Este procedimento não muda nada nosso controlador e os testes, ainda precisamos
 
 ### Refatorando o controlador
 
-Agora que temos a interface, podemos depender dela ao invés da classe no contrutor do controlador, aplicando o DIP.
+Agora que temos a interface, podemos depender dela ao invés da classe no construtor do controlador, aplicando o DIP.
 
 ```csharp
 public class OrderController : Controller
