@@ -1,4 +1,4 @@
-# Perguntas para entrevista de C
+# Perguntas para entrevista de C# e .NET
 
 Está realizando ou participando de um processo seletivo que envolve C#? Então você precisa responder estas perguntas!
 
