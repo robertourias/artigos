@@ -389,14 +389,83 @@ if(IsSubscriber) { ... }
 
 ### Escolha nomes descritivos
 
+Esolher bons nomes para classes, variáveis e métodos é essencial para um código limpo. Lembre-se que se você precisa explicar seu código, então algo pode ser melhorado nele.
 
-## Names rules
-1. Choose descriptive and unambiguous names.
-2. Make meaningful distinction.
-3. Use pronounceable names.
-4. Use searchable names.
-5. Replace magic numbers with named constants.
-6. Avoid encodings. Don't append prefixes or type information.
+#### Exemplo
+```csharp
+// Evite
+var x = 256;
+
+// Duração do que? Qual a métrica?
+int duration = 25;
+
+// Muito mais expressivo
+int durationInMinutes = 25;
+```
+
+### Faça distinções significantes
+
+Utilize sempre nomes nos quais quem estiver lendo seu código possa diferenciar seu significado de outros possíveis nomes.
+
+#### Exemplo
+```csharp
+// Evite
+var salario = 7500M;
+
+// Tem um significado maior
+var salarioEmReais = 7500M;
+```
+
+### Utilize nomes pronunciáveis e buscáveis
+
+Evite utilizar nomes difíceis de pronunciar ou inventar nomes e conveções para variáveis, classes e métodos. Lembre-se sempre da linguagem ubíquoa e da importância dela no código.
+
+#### Exemplo
+```csharp
+// Evite
+var strTexto = "Meu texto aqui";
+
+// Evite
+public void GenerateBoletoInLote() {}
+
+// Evite
+public void Cadastry() {}
+```
+
+### Evite uso excessivo de strings
+
+Quem nunca perdeu horas procurando um BUG que era apenas um problema de comparação de string? Evite digitar a mesma string várias vezes, utilize constantes para isto.
+
+#### Exemplo
+
+```csharp
+// Evite
+if(environment == "PROD")
+    ...
+
+// Utilize
+const string ENV = "PROD";
+
+if(environment == ENV)
+    ...
+```
+
+### Não use prefixo ou caracteres especiais
+
+Não utilize prefixo com o tipo da variável, classe ou método e NUNCA use espaços ou caracteres especiais nestes itens.
+
+#### Exemplo
+
+```csharp
+// Evite
+public class clsCustomer { ... }
+
+// Evite
+string strNome = "André";
+
+// Evite
+var situação - "Pendente";
+```
 
 ## Functions rules
 1. Small.
