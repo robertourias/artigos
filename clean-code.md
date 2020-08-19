@@ -467,23 +467,230 @@ string strNome = "André";
 var situação - "Pendente";
 ```
 
-## Functions rules
-1. Small.
-2. Do one thing.
-3. Use descriptive names.
-4. Prefer fewer arguments.
-5. Have no side effects.
-6. Don't use flag arguments. Split method into several independent methods that can be called from the client without the flag.
+## Regras para funções ou métodos
 
-## Comments rules
-1. Always try to explain yourself in code.
-2. Don't be redundant.
-3. Don't add obvious noise.
-4. Don't use closing brace comments.
-5. Don't comment out code. Just remove.
-6. Use as explanation of intent.
-7. Use as clarification of code.
-8. Use as warning of consequences.
+### Pequenas e com apenas um objetivo
+
+Mantenha suas funções ou métodos o menor possível. É mais fácil ter métodos menores e reutilizáveis do que tudo dentro de um método só.
+
+#### Exemplo
+
+```csharp
+// Evite
+public void RealizarPedido() 
+{ 
+    // Cadastra o cliente
+    // Aplica o desconto
+    // Atualiza o estoque
+    // Salva o pedido
+}
+
+// Utilize
+public void SaveCustomer() { ... }
+public void ApplyDiscount() { ... }
+public void UpdateInventoy() { ... }
+public void PlaceOrder() { ... }
+```
+
+### Utilize nomes descritivos
+
+A mesma regra dos nomes anteriormente vista aqui se aplica para este cenário. Mantenha nomes concisos, sem caracteres especiais.
+
+#### Exemplo
+
+```csharp
+// Evite
+// Calcular o que?
+public void Calcular() { ... }
+
+// Utilize
+// Calcula o ICMS
+public void CalcularICMS() { ... }
+```
+
+### Opte por poucos parâmetros
+
+Evite exigir muitos parâmetros para construção do objeto, assim como use e abuse dos **Optional Parameters** do C#.
+
+#### Exemplo
+
+```csharp
+// Evite
+public void SaveCustomer(string street, string number, string neighborhood, string city, string state, string country, string zipCode) { ... }
+
+// Melhorando
+public void SaveCustomer(Address address) { ... }
+```
+
+### Cuidado com efeitos colaterais
+
+Evite que uma função altere valores de outra classe sem ser a dela. Isto é chamado de efeito colateral.
+
+#### Exemplo
+
+```csharp
+// Evite
+public class Order 
+{
+    public decimal Total { get; set; }
+}
+
+var order = new Order();
+
+// Qualquer um fora da classe Order 
+// pode atualizar seu total
+order.Total = 250; 
+```
+
+```csharp
+// Utilize
+public class Order 
+{
+    public decimal Total { get; private set; }
+
+    public void CalculateTotal() { ... }
+}
+
+var order = new Order();
+
+// Total é privado, ninguém de fora consegue 
+// modificá-lo, evitando efeitos colaterais
+order.Total = 250; // ERRO
+```
+
+### Não tome decisões desnecessárias
+
+Não utilize os famosos "flags" para tomar decisões dentro dos métodos, divida-os em vários métodos ou até mesmo outras classes.
+
+#### Exemplo
+
+```csharp
+// Evite
+public class CustomerRepository 
+{
+    public void CreateOrUpdate(Customer customer, bool create)
+    {
+        if(create)
+            ...
+        else
+            ...
+    }
+}
+```
+
+```csharp
+// Utilize
+public class CustomerRepository 
+{
+    public void Create(Customer customer) { ... }
+    public void Update(Customer customer) { ... }
+}
+```
+
+## Regras de comentários
+
+### Um código bom é expressivo
+
+Teoricamente, se você precisa comentar uma parte do seu código, é por que algo está errado com ele, ele não está expressivo o suficiente.
+
+### Não seja redundante
+
+Evite comentários que não fazem sentido algum ao contexto ou cenário.
+
+#### Exemplo
+
+```csharp
+// Evite
+
+// Função principal do sistema
+public void Main() { ... }
+```
+
+### Não feche os comentários
+
+Não há necessidade de fechar os comentários.
+
+#### Exemplo
+
+```csharp
+// Evite
+
+// Comentário // <- Desnecessário
+public void Main() { ... }
+```
+
+### Evite códigos comentados
+
+Não deixe sujeira em seu código, ao invés de deixar algo comentado, remova ele. Hoje temos versionadores de código, você pode "voltar no tempo" facilmente.
+
+#### Exemplo
+
+```csharp
+// Evite
+public void MinhaFuncao() 
+{ 
+    // string texto = "1234";
+    // public void Metodo() {... }
+}
+```
+
+### Inteção
+
+Um bom uso de comentários é sobre a intenção de um método, classe ou variável (Variável nem tanto).
+
+#### Exemplo
+
+```csharp
+// Utilize
+
+// Retorna a lista de produtos inativos
+// para o relatório de fechamento mensal
+public IList<Product> ObtemProdutosInativos() 
+{ 
+    ...
+}
+```
+
+### Esclarecimento
+
+Outro uso interessante para os comentários são esclarecimentos sobre o código.
+
+#### Exemplo
+
+```csharp
+// Utilize
+public void CancelarPedido() 
+{ 
+    // Caso o pedido já tenha sido enviado
+    // ele não pode mais ser cancelado.
+    if(DataEnvio > DateTime.Now)
+    {
+        AddNotification("O pedido já foi enviado e não pode ser cancelado");
+    }
+}
+```
+
+### Consequências
+
+Podemos utilizar comentários para alertar sobre trechos do código que podem ter consequências mais sérias. Neste caso recomendo o uso de um comentário em XML mais elaborado.
+
+#### Exemplo
+
+```csharp
+// Utilize
+
+/// <summary>
+/// ATENÇÃO: Este método cancela o pedido e estorna o pagamento
+/// </summary>
+public void CancelarPedido() 
+{ 
+    ...
+}
+```
+
+## Estrutura do código
+
+
 
 ## Source code structure
 1. Separate concepts vertically.
