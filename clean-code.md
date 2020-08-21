@@ -690,14 +690,103 @@ public void CancelarPedido()
 
 ## Estrutura do código
 
+### Separe conceitos verticalmente
+
+Mantenha uma estrutura de pastas saudável e organizada. Não precisa criar uma pasta para cada arquivo, mas pode haver uma separação por contexto ou feature.
+
+#### Exemplo
+
+* MeuApp
+   * MeuApp.Domain
+     * MeuApp.Domain.Contexts
+       * MeuApp.Domain.Contexts.PaymentContext
+         * MeuApp.Domain.Contexts.PaymentContexts.Entities
+         * MeuApp.Domain.Contexts.PaymentContexts.ValueObjects
+         * MeuApp.Domain.Contexts.PaymentContexts.Enums
+       * MeuApp.Domain.Contexts.AccountContext
+         * MeuApp.Domain.Contexts.AccountContext.Entities
+         * MeuApp.Domain.Contexts.AccountContext.ValueObjects
+         * MeuApp.Domain.Contexts.AccountContext.Enums
 
 
-## Source code structure
-1. Separate concepts vertically.
-2. Related code should appear vertically dense.
-3. Declare variables close to their usage.
-4. Dependent functions should be close.
-5. Similar functions should be close.
+### Declare variáveis próximas de seu uso
+
+Não crie todas as variáveis juntas, no começo da class ou método, defina-as próximas de onde serão utilizadas.
+
+#### Exemplo
+```csharp
+// Evite
+var total = 0;
+
+public void CreateCustomer() { ... }
+
+public void CreateOrder() { ... }
+
+public void UpdateCustomer() { ... }
+
+public void CalculateTotal() 
+{ 
+    total = 250; // <- Só é utilizada aqui
+}
+```
+
+```csharp
+// Utilize
+public void CreateCustomer() { ... }
+
+public void CreateOrder() { ... }
+
+public void UpdateCustomer() { ... }
+
+var total = 0;
+public void CalculateTotal() 
+{ 
+    total = 250;
+}
+```
+
+### Agrupe funcionalidades similares
+
+Se uma função pertence a um grupo dentro de um objeto, mantenha-as sempre por perto.
+
+#### Exemplo
+
+```csharp
+// Evite
+public void CreateCustomer() { ... } 
+
+public void CheckInventory() { ... }
+
+public void CreateOrder() { ... }
+
+public void UpdateCustomer() { ... }
+
+public void CalculateTotal() { .. }
+```
+
+```csharp
+// Utilize
+public void CreateCustomer() { ... } 
+public void UpdateCustomer() { ... }
+
+public void CheckInventory() { ... }
+public void CreateOrder() { ... }
+public void CalculateTotal() { .. }
+```
+
+### Declare funções de cima para baixo
+
+```csharp
+// Utilize
+public void CreateCustomer(string name) { ... } 
+
+public void CreateCustomer(string name, int age) { ... } 
+
+public void CreateCustomer(string name, int age, Address address) { ... } 
+
+public void CreateCustomer(string name, int age, Address address, bool active) { ... } 
+```
+
 6. Place functions in the downward direction.
 7. Keep lines short.
 8. Don't use horizontal alignment.
