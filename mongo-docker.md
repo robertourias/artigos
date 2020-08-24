@@ -1,6 +1,6 @@
-# SQL Server Docker
+# MongoDb Docker
 
-Neste artigo vou mostrar como podemos criar uma imagem do SQL Server e executar ela via Docker em poucos minutos!
+Neste artigo vamos aprender a utilizar o MongoDb via Docker, dispensando a necessidade de um serviço sempre em execução na sua máquina de desenvolvimento.
 
 ## Requisitos
 
@@ -28,22 +28,22 @@ Certifique-se que o Docker está em execução e abra um novo terminal, no meu c
 Docker version 19.03.12, build 48a66213fe
 ```
 
-Nosso primeiro passo então é obter a imagem do SQL Server que será o molde para criarmos nossos containers. Para isto, executamos o comando abaixo.
+Nosso primeiro passo então é obter a imagem do Mongo que será o molde para criarmos nossos containers. Para isto, executamos o comando abaixo.
 
 ```
-docker pull mcr.microsoft.com/mssql/server
+docker pull mongo
 ```
 
 Note que a primeira mensagem será <code>Using default tag: latest</code> o que significa que estamos obtendo a última versão desta imagem, provavelmente com a última versão estável do Mongo.
 
-Caso queira baixar alguma versão específica, verifique as [tags disponíveis aqui](https://hub.docker.com/_/microsoft-mssql-server).
+Caso queira baixar alguma versão específica, verifique as [tags disponíveis aqui](https://hub.docker.com/_/mongo?tab=tags).
 
-## Rodando o SQL Server
+## Rodando o Mongo
 
-Para executar esta imagem você pode usar a linha abaixo. Não se esqueça de mudar o <code>MSSQL_SA_PASSWORD</code> para a senha desejado.
+Para executar esta imagem você pode usar a linha abaixo. Não se esqueça de mudar o <code>MONGO_INITDB_ROOT_USERNAME</code> e <code>MONGO_INITDB_ROOT_PASSWORD</code> para o usuário e senha desejado.
 
 ```
-docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=1q2w3e4r@#$" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+docker run --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=balta -e MONGO_INITDB_ROOT_PASSWORD=e296cd9f mongo
 ```
 
 ### Windows
@@ -51,7 +51,7 @@ docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=1q2w3e4r@#$
 Caso esteja no Windows, com **WSL 2** é importante informar o volume onde este container será executado, utilizando a flag <code>-v ~/docker</code> como mostrado abaixo.
 
 ```
-docker run -v ~/docker --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=1q2w3e4r@#$" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+docker run -v ~/docker --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=balta -e MONGO_INITDB_ROOT_PASSWORD=e296cd9f mongo
 ```
 
 Para parar a execução você pode pressionar <kbd>CTRL</kbd> + <kbd>C</kbd> no Terminal. Deste momento em diante, seu container vai aparecer na **Dashboard** do Docker de forma visual, onde você poderá parar ou iniciar ela a qualquer momento.
@@ -61,12 +61,11 @@ Para parar a execução você pode pressionar <kbd>CTRL</kbd> + <kbd>C</kbd> no 
 Se você utilizou as mesmas configurações deste artigo, sua **Connection String** será igual abaixo. Caso necessário, modifique as informações que alterou na execução dos containers.
 
 ```
-Server=localhost,1433;Database=balta;User ID=sa;Password=1q2w3e4r@#$
+mongodb://balta:e296cd9f@localhost:27017/admin
 ```
 
 ### GUI Client
 
 Caso queira gerenciar seu banco de uma forma visual, você pode utilizar uma das ferramentas gratuitas abaixo:
 
- * [SQL Server Management Studio](https://docs.microsoft.com/pt-br/sql/ssms/download-sql-server-management-studio-ssms)
- * [Azure Data Studio](https://docs.microsoft.com/pt-br/sql/azure-data-studio/download-azure-data-studio)
+ * [MongoDb Compass](https://www.mongodb.com/try/download/compass)

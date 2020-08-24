@@ -22,6 +22,7 @@ O Docker é uma forma de abstração da nossa infraestrutura que nos beneficia t
 *   [Criando uma Imagem](#criando-uma-imagem)
 *   [Rodando o Contêiner](#rodando-o-contêiner)
 *   [Acessando os Logs](#acessando-os-logs)
+*   [WSL 2 (Somente Windows)](#wsl)
 
 ## O que é o Docker?
 
@@ -336,3 +337,22 @@ Clique sobre o contêiner e em seguida clique na opção LOGS para visualizar tu
 ## Conclusão
 
 Criar e executar imagens e contêineres no Docker não é uma tarefa difícil. Neste artigo vimos a instalação e primeiros passos para 'conteinerizar' nossas aplicações, mas ainda há muito mais a se aprender sobre Docker.
+
+# Atualizações
+
+<small>24/08/2020</small>
+
+## WSL 2 (Somente Windows)
+
+O WSL é um subsistema Linux que roda dentro do Windows, permitindo que o Docker seja executado mais rápido e de forma otimizada.
+
+Recomendamos fortemente que utilize o WSL 2 caso possível. Isto vai garantir uma performance e estabilidade melhor.
+
+O ideal é habilitar o WSL 2 **antes** de instalar o Docker, para isto basta acessar este link e realizar a instalação: [https://balta.io/blog/wsl](https://balta.io/blog/wsl)
+
+Desta forma, ao realizar a instalação do Docker, na primeira tela irá aparecer a opção abaixo, que **deve ficar** marcada.
+```
+Enable WSL 2 Windows features
+```
+
+Caso já tenha o Docker instalado e queria apenas habilitar a opção de rodá-lo via WSL, você pode alterar as opções em <code>Settings > Resources > WSL Integration > Enable integration with my default WSL Distro</code>.
