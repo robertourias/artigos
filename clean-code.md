@@ -1,4 +1,4 @@
-# Clean Code em exemplos
+# Clean Code - Guia e exemplos
 
 Como manter seu código limpo (Clean Code) seguindo algumas práticas sugeridas pelo Robert C. Martin (Uncle Bob).
 
