@@ -2,6 +2,90 @@
 
 Como manter seu código limpo (Clean Code) seguindo algumas práticas sugeridas pelo Robert C. Martin (Uncle Bob).
 
+## Índice
+* [O que é o Clean Code?](#O que é o Clean Code?)
+
+* [Regras gerais](#item)
+  * [Siga as convenções](#item)
+  * [KISS](#item)
+  * [Regra do escoteiro](#item)
+  * [Causa raiz](#item)
+
+* [Regras de design](#item)
+  * [Mantenha dados de configuração em alto nível](#item)
+  * [Polimorfismo no lugar de IFs](#item)
+  * [Mult-thread](#item)
+  * [Separe os códigos mult-thread](#item)
+  * [Utilize Async como sufixo](#item)
+  * [Evite configurações desnecessárias](#item)
+  * [Utilize injeção de dependência](#item)
+  * [Lei de Demeter](#item)
+
+* [Regras sobre entendimento do código](#item)
+  * [Seja consistente](#item)
+  * [Utilize variáveis concisas](#item)
+  * [Obsessão primitiva](#item)
+  * [Evite dependências lógicas](#item)
+  * [Evite condicionais negativas](#item)
+
+* [Regras de nomes](#item)
+  * [Escolha nomes descritivos](#item)
+  * [Faça distinções significantes](#item)
+  * [Utilize nomes pronunciáveis e buscáveis](#item)
+  * [Evite uso excessivo de strings](#item)
+  * [Não use prefixo ou caracteres especiais](#item)
+
+* [Regras para funções ou métodos](#item)
+  * [Pequenas e com apenas um objetivo](#item)
+  * [Utilize nomes descritivos](#item)
+  * [Opte por poucos parâmetros](#item)
+  * [Cuidado com efeitos colaterais](#item)
+  * [Não tome decisões desnecessárias](#item)
+
+* [Regras de comentários](#item)
+  * [Um código bom é expressivo](#item)
+  * [Não seja redundante](#item)
+  * [Não feche os comentários](#item)
+  * [Evite códigos comentados](#item)
+  * [Inteção](#item)
+  * [Esclarecimento](#item)
+  * [Consequências](#item)
+
+* [Estrutura do código](#item)
+  * [Separe conceitos verticalmente](#item)
+  * [Declare variáveis próximas de seu uso](#item)
+  * [Agrupe funcionalidades similares](#item)
+  * [Declare funções de cima para baixo](#item)
+  * [Mantenha poucas e curtas linhas](#item)
+  * [Não use alinhamento horizontal](#item)
+  * [Use os espaços em branco corretamente](#item)
+  * [Não quebre a identação](#item)
+
+* [Objetos e estruturas](#item)
+  * [Esconda estruturas internas](#item)
+  * [Opte por estrutura de dados](#item)
+  * [Evite usar dados e objetos juntos](#item)
+  * [Instanciar poucas variáveis](#item)
+  * [Classe base não deve saber sobre suas derivadas](#item)
+  * [Mais métodos, menos tomadas de decisão](#item)
+  * [Evite métodos estáticos](#item)
+
+* [Testes](#item)
+  * [Um assert por teste](#item)
+  * [Legível](#item)
+  * [Rápido](#item)
+  * [Independentes](#item)
+  * [Repetitível](#item)
+
+* [Code smells](#item)
+  * [Rigidez](#item)
+  * [Fragilidade](#item)
+  * [Imobilidade](#item)
+  * [Complexidade desnecessária](#item)
+  * [Repetição desnecessária](#item)
+  * [Opacidade](#item)
+
+
 ## O que é o Clean Code?
 
 Por que estamos falando tanto sobre código limpo (Clean Code) e por que isto é tão importante para nós? De fato a manutenção de um software é tão importante quanto sua construção.
@@ -164,7 +248,7 @@ Se um método é assíncrono, utilize sempre o sufixo **async** para identificá
 public async Task<IEnumerable<Model>> GetAsync()
 ```
 
-### Exite configurações desnecessárias
+### Evite configurações desnecessárias
 
 Evite deixar configurações no sistema só por que alguém ainda não definiu como aquilo deve ser. Isto polui o código e traz uma complexidade desnecessária.
 
