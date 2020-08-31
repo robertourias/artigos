@@ -1,4 +1,4 @@
-# Clean Code
+# Clean Code em exemplos
 
 Como manter seu código limpo (Clean Code) seguindo algumas práticas sugeridas pelo Robert C. Martin (Uncle Bob).
 
@@ -776,6 +776,10 @@ public void CalculateTotal() { .. }
 
 ### Declare funções de cima para baixo
 
+Ordenar as funções também é importante. Além da sua ordem de grandeza, suas assinaturas também devem ter uma boa oganização.
+
+#### Exemplo
+
 ```csharp
 // Utilize
 public void CreateCustomer(string name) { ... } 
@@ -787,39 +791,376 @@ public void CreateCustomer(string name, int age, Address address) { ... }
 public void CreateCustomer(string name, int age, Address address, bool active) { ... } 
 ```
 
-6. Place functions in the downward direction.
-7. Keep lines short.
-8. Don't use horizontal alignment.
-9. Use white space to associate related things and disassociate weakly related.
-10. Don't break indentation.
+### Mantenha poucas e curtas linhas
 
-## Objects and data structures
-1. Hide internal structure.
-2. Prefer data structures.
-3. Avoid hybrids structures (half object and half data).
-4. Should be small.
-5. Do one thing.
-6. Small number of instance variables.
-7. Base class should know nothing about their derivatives.
-8. Better to have many functions than to pass some code into a function to select a behavior.
-9. Prefer non-static methods to static methods.
+Evite funções com linhas longas ou muitas linhas. Não existe um número correto, mas com certeza quanto mais código em uma função, mais difícil de mantê-la será.
 
-## Tests
-1. One assert per test.
-2. Readable.
-3. Fast.
-4. Independent.
-5. Repeatable.
+#### Exemplo
+```csharp
+// Utilize
+public void CreateCustomer(string name) 
+{ 
+    var customer = new Customer(name);
+    _repository.Customers.Add(customer);
+    _repository.SaveChanges();
+} 
+```
+
+### Não use alinhamento horizontal
+
+Não há necessidade de alinhar horizontalmente variáveis, constantes ou mesmo propriedades.
+
+#### Exemplo
+```csharp
+// Evite
+private   Long            requestParsingTimeLimit;
+protected Request         request;
+private   FitNesseContent context;
+this.context =            context;
+input =                   s.getInputStream()
+requestParsingTimeLimit = 900;
+```
+
+### Use os espaços em branco corretamente
+
+Utilize espaço em branco para associar ou não itens relacionados. Uma boa IDE já fará este trabalho por você.
+
+#### Exemplo
+```csharp
+// Utilize
+private void meuMetodo(String parametro) {
+  variavel++;
+  int outraVariavel = algumArray.length();
+  total += algumMetodo();
+  outraClasse.algumMetodo(variavel, total);
+  outroMetodo(total);
+}
+```
+
+### Não quebre a identação
+
+Este item dispensa comentários. Um código não identado não pode ser enviado para o projeto.
+
+#### Exemplo
+```csharp
+// Evite
+public class MinhaClasse{
+var valor=12;
+Console.WriteLine(valor);
+}
+```
+
+## Objetos e estruturas
+
+### Esconda estruturas internas
+
+Este tópico abrange uma discussão extensa. Esconder a estrutura de um objeto, ou seja, privar as propridades relacioadas a dados dele, vai sempre trazer resultados positivos e negativos.
+
+Particularmente, gosto de tornar os <code>SET</code> privados, mas não é uma regra do meu código e não aplico em todas as propriedades. Como consequência, sempre precisamos de mais métodos para manipulação destes valores.
+
+Se os dados não fazem sentido para os objetos externos, não há discussão, mantenha-os privados.
+
+#### Exemplo
+
+```csharp
+public class NotificationContext
+{
+    private List<string> _notifications;
+
+    public void Add(string notification) 
+    {
+        _notifications.Add(notification);
+    }
+
+    public bool IsValid() => _notifications.Any();
+
+    public IEnumerable Notifications { get => _notifications.AsEnumerable(); }
+}
+```
+
+
+### Opte por estrutura de dados
+
+Estruturas de dados representam a forma como os dados são organizados, podendo ser uma <code>class</code> ou um <code>struct</code>. Normalmente associamos as <code>struct</code> mais a estrutura de dados do que as classes, mas podemos estruturar dados com qualquer uma delas.
+
+A diferença é que ao usar <code>class</code> (OOP) temos recursos como abstração, herança, polimorfismo, dentre outros.
+
+Particularmente acho que a segmentação em objetos de valor é um ponto chave neste item.
+
+#### Exemplo
+```csharp
+// Usando estruturas
+public struct Email 
+{
+    public Email(string address) 
+    { 
+        // Permite apenas E-mails hotmail, gmail, yahoo...
+    }
+
+    public string Address { get; private set; }
+}
+
+public class Customer
+{
+    public Email Email { get; private set; }
+}
+```
+
+```csharp
+// Usando classes
+public class Email 
+{
+    public Email(string address) 
+    { 
+        // Permite qualquer tipo de E-mail
+    }
+
+    public string Address { get; private set; }
+}
+
+public class CommonEmail : Email
+{
+    public Email(string address) 
+        : base(address)
+    { 
+        // Permite apenas E-mails hotmail, gmail, yahoo...
+    }        
+}
+
+public class Customer
+{
+    public Email Email { get; private set; }
+}
+```
+
+> Nos dois casos temos estruturas representando um E-mail como objeto de valor, porém no segundo cenário, podemos criar extensões e ter uma maior flexibilidade.
+
+### Evite usar dados e objetos juntos
+
+Este é outro ponto polêmico que muitos interpretam como manter nos objetos apenas propriedades enquanto seus comportamentos ficam em outros objetos.
+
+Particularmente acho que a essência de um objeto é justamente o agrupamento de variáveis e funções (Propriedades e métodos). Neste ponto eu sempre mantenho os comportamentos nas entidades.
+
+Em relação a manter parte com <code>object</code> e parte com <code>struct</code> eu confesso que a maior parte dos meus casos eu uso apenas o <code>object</code>. Pode ser vício ou puro comodismo, mas acho estranho esta mistura.
+
+Talvez uma abordagem que aplique estes conceitos de uma forma legal seja novamente o uso dos **value objects**.
+
+```csharp
+// Objeto de valor, representa um endereço, sua estrutura de dados
+public class Address
+{
+    public string ZipCode { get; set; }
+    public string Street { get; set; }
+    public string Number { get; set; }
+    public string Neighborhood { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string Country { get; set; }
+}
+
+// Objeto do cliente... com seus comportamentos
+public class Customer
+{
+    public Address BillingAddress { get; private set; }
+    public Address ShippingAddress { get; private set; }
+
+    public void ChangeBillingAddress(Address address) { ... }
+    public void ChangeShippingAddress(Address address) { ... }
+}
+```
+
+### Instanciar poucas variáveis
+
+Evite instanciar muitas variáveis nos objetos e seus métodos. Faz uso maior das propriedades se possível.
+
+#### Exemplo
+```csharp
+public class ShoppingCart
+{
+    public decimal Total { get; private set; }
+
+    public decimal CalculateTotal()
+    {
+        var total = 0; // Desnecessário
+        foreach(var item in Items)
+            total += item.Price;
+    }
+}
+```
+
+```csharp
+// Melhorando
+public class ShoppingCart
+{
+    public decimal Total { get; private set; }
+
+    private decimal CalculateTotal()
+    {        
+        foreach(var item in Items)
+            Total += item.Price;
+    }
+}
+```
+
+### Classe base não deve saber sobre suas derivadas
+
+Uma classe não deve saber sobre detalhes dos seus filhos. Nas verdade isto me soa tão estranho que não vejo um cenário onde uma classe pai consiga saber detalhes de seus filhos.
+
+#### Exemplo
+
+```csharp
+// N/A
+```
+
+### Mais métodos, menos tomadas de decisão
+
+Já comentamos bastante isto na parte de OOP dos cursos, mas fica aqui o reforço, sempre opte por ter mais métodos, mais sobrecargas do que tomadas de decisão.
+
+#### Exemplo
+```csharp
+// Evite
+public class Order
+{
+    public void Pay(CreditCard card)
+    {
+        if(card == null)
+            // Pagamento via boleto
+
+        // Pagamento via cartão
+    }
+}
+```
+
+```csharp
+// Utilize
+public class Order
+{
+    public void Pay()
+    {
+        // Pagamento via boleto
+    }
+
+    public void Pay(CreditCard card)
+    {
+        // Pagamento via cartão de crédito
+    }
+}
+```
+
+### Evite métodos estáticos
+
+Classes e métodos estáticos são difíceis de gerenciar, além de serem compartilhados entre a aplicação como um todo. Imagina que você tem uma classe estática que tem uma lista de notificações, esta lista seria compartilhada entre todas as requisições (Diversos usuários) em seu sistema.
+
+```csharp
+// Evite
+public static class NotificationContext
+{
+    public static IList<Notification> Notifications { get; set;}
+}
+```
+
+```csharp
+// Utilize
+public class NotificationContext
+{
+    public IList<Notification> Notifications { get; set;}
+}
+```
+
+## Testes
+
+### Um assert por teste
+Utilize um e apenas um <code>assert</code> por teste. Mais de um assert pode confundir você e comprometer a escrita do seu teste.
+
+```csharp
+// Evite
+[TestMethod]
+public void ShouldReturnTrue 
+{
+    Assert.AreEqual(true);
+    Assert.AreEqual(1);
+}
+```
+
+```csharp
+// Utilize
+[TestMethod]
+public void ShouldReturnTrue 
+{
+    Assert.AreEqual(true);
+}
+```
+
+### Legível
+Trate seus testes como parte fundamental do seu código, não secundária. Os testes tem que ser organizados e bem escritos assim como o resto do seu software.
+
+#### Exemplo
+```csharp
+// N/A
+```
+
+### Rápido
+
+Um dos objetivos principais de um teste é cobrir uma pequena porção do nosso código. Normalmente estendemos esta ideia para a maior parte do código possível, ocasionando uma ampla gama de testes de unidade.
+
+Dados estes testes, os mesmo são executados antes da publicação das nossas aplicações, garantindo que não enviaremos nada com bugs para produção.
+
+Porém, em cenários mais críticos, o tempo dos deploys (Publicações) é extremamente importante, e se nossos testes demoram muito, podem impactar negativamente nisto.
+
+#### Exemplo
+
+```csharp
+// N/A
+```
+
+### Independentes
+
+Os testes não devem depender de entidades externas, nem de outros testes. Neste exemplo, volto a salientar o uso do DI e DIP.
+
+#### Exemplo
+[![Dependency Injection](https://img.youtube.com/vi/va9wX68lAfA/0.jpg)](https://www.youtube.com/watch?v=va9wX68lAfA "Dependency Injection")
+
+
+### Repetitível
+
+Devemos ter a possibilidade de repetir o mesmo teste, mas com parâmetros diferentes.
+
+#### Exemplo
+```csharp
+[TestMethod]
+[DataRow("email@valido.com", "email@balta.io")]
+public void ShouldValidateEmail(string email)
+{
+    Assert.IsTrue(new Email(email).IsValid());
+}
+```
 
 ## Code smells
-1. Rigidity. The software is difficult to change. A small change causes a cascade of subsequent changes.
-2. Fragility. The software breaks in many places due to a single change.
-3. Immobility. You cannot reuse parts of the code in other projects because of involved risks and high effort.
-4. Needless Complexity.
-5. Needless Repetition.
-6. Opacity. The code is hard to understand.
 
-## Fonte
-https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29
+Code Smells são alguns sintomas que podemos identificar e que nos remetem a uma má aplicação do Clean Code de uma forma geral.
 
-https://www.amazon.com.br/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM
+### Rigidez
+
+Seu software é difícil de mudar. Qualquer mudança, por mínima que seja, causa uma cascata de outras mudanças.
+
+### Fragilidade
+
+Uma simples mudança quebra seu software em diversos locais. É o famosos "cobre o pé, descobre a cabeça".
+
+### Imobilidade
+Você não consegue reutilizar partes do seu código em outros projetos por que isto requer um esforço gigantes. Em resumo, tudo está muito acoplado.
+
+### Complexidade desnecessária
+Você usa padrões e arquiteturas que tornam seu código mais burocrático do que efetivo. É o famoso "e se", onde pensamos em tudo que o software pode ter um dia e já "deixamos tudo pronto".
+
+"E se eu quiser voar com meu carro um dia?", bem, se um dia você quiser voar, aí você constrói as asas, mas se não vai precisar voar agora, foca em construir apenas o carro.
+
+### Repetição desnecessária
+Você precisa repetir o mesmo código em diversos lugares.
+
+### Opacidade
+Seu código é difícil de entender.
+
+## Fontes
+* [Post em Inglês](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29)
+* [Livro Clean Code](https://www.amazon.com.br/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM)
